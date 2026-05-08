@@ -306,6 +306,39 @@
   }
   footer strong{color:var(--orange)}
 
+  /* ── CUSTOM CURSOR ── */
+  *{cursor:none!important}
+  #cur-dot{
+    position:fixed;top:0;left:0;z-index:99999;pointer-events:none;
+    width:12px;height:12px;
+    background:#FF6B00;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 10px 3px rgba(255,107,0,0.7);
+    transition:transform 0.08s ease,width 0.15s ease,height 0.15s ease,background 0.15s ease;
+  }
+  #cur-ring{
+    position:fixed;top:0;left:0;z-index:99998;pointer-events:none;
+    width:32px;height:32px;
+    border:2px solid rgba(255,107,0,0.6);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    transition:transform 0.18s ease,width 0.2s ease,height 0.2s ease,border-color 0.2s ease;
+  }
+  .cur-trail{
+    position:fixed;top:0;left:0;z-index:99997;pointer-events:none;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    opacity:0;
+    animation:trailFade 0.5s ease forwards;
+  }
+  @keyframes trailFade{
+    0%  {opacity:0.7;transform:translate(-50%,-50%) scale(1);}
+    100%{opacity:0;  transform:translate(-50%,-50%) scale(0.2);}
+  }
+  /* cursor grows on hover over interactive elements */
+  a:hover ~ #cur-dot, button:hover ~ #cur-dot{transform:translate(-50%,-50%) scale(1.8)}
+
   /* ── SCROLL REVEAL base ── */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s,transform 0.6s}
   .reveal.visible{opacity:1;transform:translateY(0)}
@@ -331,6 +364,10 @@
 </style>
 </head>
 <body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
 <nav>
   <div class="nav-logo">
@@ -651,6 +688,66 @@
   document.querySelectorAll('.rank-card').forEach(el => observer.observe(el));
   // Discord box
   document.querySelectorAll('.discord-box').forEach(el => observer.observe(el));
+  /* ── CUSTOM CURSOR ── */
+  const dot  = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx+'px';
+    dot.style.top  = my+'px';
+
+    // spawn trail ember
+    const t = document.createElement('div');
+    t.className = 'cur-trail';
+    const sz = 3 + Math.random()*5;
+    t.style.cssText = `width:${sz}px;height:${sz}px;left:${mx}px;top:${my}px;background:${Math.random()>.5?'#FF6B00':'#FFCB8C'};`;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), 500);
+  });
+
+  // ring lags behind for smooth follow
+  (function loopRing(){
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    ring.style.left = rx+'px';
+    ring.style.top  = ry+'px';
+    requestAnimationFrame(loopRing);
+  })();
+
+  // grow on interactive elements
+  const hoverEls = document.querySelectorAll('a,button,.rank-card,.feature-card,.staff-card,.ip-box');
+  hoverEls.forEach(el => {
+    el.addEventListener('mouseenter', ()=>{
+      dot.style.width  = '18px';
+      dot.style.height = '18px';
+      dot.style.background = '#FFCB8C';
+      ring.style.width  = '48px';
+      ring.style.height = '48px';
+      ring.style.borderColor = 'rgba(255,203,140,0.8)';
+    });
+    el.addEventListener('mouseleave', ()=>{
+      dot.style.width  = '12px';
+      dot.style.height = '12px';
+      dot.style.background = '#FF6B00';
+      ring.style.width  = '32px';
+      ring.style.height = '32px';
+      ring.style.borderColor = 'rgba(255,107,0,0.6)';
+    });
+  });
+
+  // click burst
+  document.addEventListener('mousedown', ()=>{
+    dot.style.transform = 'translate(-50%,-50%) scale(0.6)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    ring.style.opacity = '0.3';
+  });
+  document.addEventListener('mouseup', ()=>{
+    dot.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.opacity = '1';
+  });
 </script>
 
 </body>
