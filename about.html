@@ -1,361 +1,365 @@
-<!DOCTYPE html><html class="dark" lang="en"><head>
+<!DOCTYPE html><html class="dark" lang="id"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>About Us | COOKIES NETWORK</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Work+Sans:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;family=Work+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Work+Sans:wght@400;500&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .voxel-bg {
-            background-image: radial-gradient(circle at 2px 2px, rgba(210, 180, 140, 0.05) 1px, transparent 0);
-            background-size: 32px 32px;
-        }
-        .chocolate-shadow {
-            box-shadow: 0 20px 40px -15px rgba(45, 27, 14, 0.6);
-        }
-        .glass-panel {
-            backdrop-filter: blur(12px);
-            background: rgba(45, 27, 14, 0.4);
-            border: 1px solid rgba(210, 180, 140, 0.1);
-        }
-        .pressed-button {
-            box-shadow: 0 4px 0 0 #2e7d32;
-        }
-        .pressed-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 0 #2e7d32;
-        }
-    </style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.voxel-bg { background-image: radial-gradient(circle at 2px 2px, rgba(210, 180, 140, 0.05) 1px, transparent 0); background-size: 32px 32px; }
+.chocolate-shadow { box-shadow: 0 20px 40px -15px rgba(45, 27, 14, 0.6); }
+.glass-panel { backdrop-filter: blur(12px); background: rgba(45, 27, 14, 0.4); border: 1px solid rgba(210, 180, 140, 0.1); }
+.pressed-button { box-shadow: 0 4px 0 0 #2e7d32; }
+.pressed-button:active { transform: translateY(2px); box-shadow: 0 2px 0 0 #2e7d32; }
+</style>
 <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-secondary": "#00390a",
-                      "on-tertiary": "#4e2600",
-                      "secondary-fixed": "#94f990",
-                      "on-surface": "#eae1dd",
-                      "error": "#ffb4ab",
-                      "surface-bright": "#3d3836",
-                      "on-primary": "#402d10",
-                      "secondary-container": "#00761f",
-                      "on-background": "#eae1dd",
-                      "secondary": "#78dc77",
-                      "on-primary-fixed-variant": "#584324",
-                      "tertiary-container": "#faa663",
-                      "inverse-on-surface": "#342f2d",
-                      "primary-fixed": "#feddb3",
-                      "error-container": "#93000a",
-                      "on-tertiary-fixed": "#2f1400",
-                      "on-primary-fixed": "#281801",
-                      "surface": "#161311",
-                      "on-secondary-fixed-variant": "#005313",
-                      "primary-fixed-dim": "#e1c299",
-                      "surface-dim": "#161311",
-                      "surface-tint": "#e1c299",
-                      "surface-container-highest": "#393431",
-                      "tertiary-fixed": "#ffdcc4",
-                      "on-error-container": "#ffdad6",
-                      "on-surface-variant": "#d1c5b8",
-                      "tertiary": "#ffcaa3",
-                      "outline-variant": "#4d453c",
-                      "surface-container": "#231f1d",
-                      "inverse-primary": "#725a39",
-                      "surface-variant": "#393431",
-                      "surface-container-low": "#1f1b19",
-                      "on-secondary-container": "#95fb92",
-                      "outline": "#9a8f83",
-                      "surface-container-lowest": "#110d0c",
-                      "inverse-surface": "#eae1dd",
-                      "surface-container-high": "#2e2927",
-                      "secondary-fixed-dim": "#78dc77",
-                      "primary-container": "#d2b48c",
-                      "tertiary-fixed-dim": "#ffb780",
-                      "on-secondary-fixed": "#002204",
-                      "on-primary-container": "#5b4526",
-                      "on-error": "#690005",
-                      "background": "#161311",
-                      "primary": "#efcfa6",
-                      "on-tertiary-fixed-variant": "#6f3800",
-                      "on-tertiary-container": "#733a00"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "base": "8px",
-                      "section-gap": "80px",
-                      "container-max": "1280px",
-                      "margin-mobile": "16px",
-                      "gutter": "24px"
-              },
-              "fontFamily": {
-                      "body-md": ["Work Sans"],
-                      "display-lg": ["Plus Jakarta Sans"],
-                      "body-lg": ["Work Sans"],
-                      "label-md": ["JetBrains Mono"],
-                      "button-text": ["Plus Jakarta Sans"],
-                      "headline-sm": ["Plus Jakarta Sans"],
-                      "headline-md": ["Plus Jakarta Sans"],
-                      "display-lg-mobile": ["Plus Jakarta Sans"]
-              },
-              "fontSize": {
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                      "button-text": ["16px", {"lineHeight": "24px", "fontWeight": "700"}],
-                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
-              }
-            },
-          },
-        }
-    </script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary": "#00390a","on-tertiary": "#4e2600","secondary-fixed": "#94f990",
+        "on-surface": "#eae1dd","error": "#ffb4ab","surface-bright": "#3d3836",
+        "on-primary": "#402d10","secondary-container": "#00761f","on-background": "#eae1dd",
+        "secondary": "#78dc77","on-primary-fixed-variant": "#584324","tertiary-container": "#faa663",
+        "inverse-on-surface": "#342f2d","primary-fixed": "#feddb3","error-container": "#93000a",
+        "on-tertiary-fixed": "#2f1400","on-primary-fixed": "#281801","surface": "#161311",
+        "on-secondary-fixed-variant": "#005313","primary-fixed-dim": "#e1c299","surface-dim": "#161311",
+        "surface-tint": "#e1c299","surface-container-highest": "#393431","tertiary-fixed": "#ffdcc4",
+        "on-error-container": "#ffdad6","on-surface-variant": "#d1c5b8","tertiary": "#ffcaa3",
+        "outline-variant": "#4d453c","surface-container": "#231f1d","inverse-primary": "#725a39",
+        "surface-variant": "#393431","surface-container-low": "#1f1b19","on-secondary-container": "#95fb92",
+        "outline": "#9a8f83","surface-container-lowest": "#110d0c","inverse-surface": "#eae1dd",
+        "surface-container-high": "#2e2927","secondary-fixed-dim": "#78dc77","primary-container": "#d2b48c",
+        "tertiary-fixed-dim": "#ffb780","on-secondary-fixed": "#002204","on-primary-container": "#5b4526",
+        "on-error": "#690005","background": "#161311","primary": "#efcfa6",
+        "on-tertiary-fixed-variant": "#6f3800","on-tertiary-container": "#733a00"
+      },
+      "borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},
+      "spacing": {"base": "8px","section-gap": "80px","container-max": "1280px","margin-mobile": "16px","gutter": "24px"},
+      "fontFamily": {
+        "body-md": ["Work Sans"],"display-lg": ["Plus Jakarta Sans"],"body-lg": ["Work Sans"],
+        "label-md": ["JetBrains Mono"],"button-text": ["Plus Jakarta Sans"],
+        "headline-sm": ["Plus Jakarta Sans"],"headline-md": ["Plus Jakarta Sans"],"display-lg-mobile": ["Plus Jakarta Sans"]
+      },
+      "fontSize": {
+        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+        "button-text": ["16px", {"lineHeight": "24px", "fontWeight": "700"}],
+        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+      }
+    }
+  }
+}
+</script>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-on-primary">
-<!-- TopNavBar Shell -->
-<header class="bg-surface-container-low/95 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant shadow-md"><div class="max-w-container-max mx-auto px-gutter py-3 flex items-center justify-between"><div class="flex items-center gap-8"><a class="flex flex-col" href="index.html"><h1 class="font-display-lg text-headline-sm text-primary tracking-tighter">COOKIES NETWORK</h1><div class="flex items-center gap-1.5 -mt-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Server Aktif</span></div></a><nav class="hidden md:flex items-center gap-1"><a class="px-4 py-2 rounded-xl flex items-center gap-2 transition-transform active:scale-95 text-on-surface-variant hover:bg-surface-variant" href="index.html"><span class="material-symbols-outlined text-sm">home</span><span class="font-button-text text-sm">Beranda</span></a><a class="px-4 py-2 rounded-xl flex items-center gap-2 transition-colors bg-secondary-container text-on-secondary-container" href="about.html"><span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">info</span><span class="font-button-text text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">Tentang Kami</span></a><a class="text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-xl flex items-center gap-2 transition-colors" href="store.html"><span class="material-symbols-outlined text-sm">shopping_cart</span><span class="font-button-text text-sm">Toko</span></a><a class="text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-xl flex items-center gap-2 transition-colors" href="staff.html"><span class="material-symbols-outlined text-sm">shield_person</span><span class="font-button-text text-sm">Staf</span></a></nav></div><div class="flex items-center gap-3"><button class="bg-primary text-on-primary font-button-text px-6 py-2.5 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform shadow-lg" onclick="copyIP()"><span class="material-symbols-outlined text-xl">content_copy</span><span class="text-sm">Salin IP</span></button><button class="md:hidden text-on-surface p-2 rounded-lg hover:bg-surface-variant transition-colors" onclick="toggleMobileMenu()"><span class="material-symbols-outlined">menu</span></button></div></div><div class="hidden md:hidden bg-surface-container-low border-b border-outline-variant animate-in slide-in-from-top duration-300" id="mobile-menu"><nav class="flex flex-col p-4 gap-2"><a class="flex items-center gap-3 p-3 rounded-xl text-on-surface-variant" href="index.html"><span class="material-symbols-outlined">home</span> Beranda</a><a class="flex items-center gap-3 p-3 rounded-xl bg-secondary-container text-on-secondary-container" href="about.html"><span class="material-symbols-outlined">info</span> Tentang Kami</a><a class="flex items-center gap-3 p-3 text-on-surface-variant rounded-xl" href="store.html"><span class="material-symbols-outlined">shopping_cart</span> Toko</a><a class="flex items-center gap-3 p-3 text-on-surface-variant rounded-xl" href="staff.html"><span class="material-symbols-outlined">shield_person</span> Staf</a></nav></div></header>
+<!-- Header -->
+<header class="bg-surface-container-low/95 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant shadow-md">
+<div class="max-w-container-max mx-auto px-gutter py-3 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<a class="flex flex-col" href="index.html">
+<h1 class="font-display-lg text-headline-sm text-primary tracking-tighter">COOKIES NETWORK</h1>
+<div class="flex items-center gap-1.5 -mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Server Aktif</span>
+</div>
+</a>
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-4 py-2 rounded-xl flex items-center gap-2 transition-transform active:scale-95 text-on-surface-variant hover:bg-surface-variant" href="index.html">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="font-button-text text-sm">Beranda</span>
+</a>
+<a class="px-4 py-2 rounded-xl flex items-center gap-2 transition-colors bg-secondary-container text-on-secondary-container" href="about.html">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="font-button-text text-sm">Tentang Kami</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-xl flex items-center gap-2 transition-colors" href="store.html">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+<span class="font-button-text text-sm">Toko</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant px-4 py-2 rounded-xl flex items-center gap-2 transition-colors" href="staff.html">
+<span class="material-symbols-outlined text-sm">shield_person</span>
+<span class="font-button-text text-sm">Staf</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary text-on-primary font-button-text px-6 py-2.5 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform shadow-lg" onclick="copyIP()">
+<span class="material-symbols-outlined text-xl">content_copy</span>
+<span class="text-sm">Salin IP</span>
+</button>
+<button class="md:hidden text-on-surface p-2 rounded-lg hover:bg-surface-variant transition-colors" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<div class="hidden md:hidden bg-surface-container-low border-b border-outline-variant animate-in slide-in-from-top duration-300" id="mobile-menu">
+<nav class="flex flex-col p-4 gap-2">
+<a class="flex items-center gap-3 p-3 rounded-xl text-on-surface-variant" href="index.html"><span class="material-symbols-outlined">home</span> Beranda</a>
+<a class="flex items-center gap-3 p-3 rounded-xl bg-secondary-container text-on-secondary-container" href="about.html"><span class="material-symbols-outlined">info</span> Tentang Kami</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant rounded-xl" href="store.html"><span class="material-symbols-outlined">shopping_cart</span> Toko</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant rounded-xl" href="staff.html"><span class="material-symbols-outlined">shield_person</span> Staf</a>
+</nav>
+</div>
+</header>
+
 <main class="voxel-bg min-h-screen">
 <!-- Hero Section -->
 <section class="relative h-[614px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-40 grayscale-[20%] brightness-75" data-alt="A sprawling Minecraft landscape featuring a massive cookie-shaped floating island with waterfalls and vibrant vegetation. The sky is a warm sunset orange blending into deep purple, reflecting a premium and high-fidelity gaming world. The lighting is cinematic, casting long shadows across the blocky terrain in a high-energy and welcoming atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyc885riNpHy8XPMmrA9KNSt-HWsXSh2_E3nBdg4m-qAu7IvKsYOP3J80081zzLVYTdc5ZpB9MDpyQ34aq2wFIvcP_hHAg5tgn7DiuurkyHaNZsXsuk1dSaz3NpxnibM8TQwDLvHX2SI7iAdPgtVushNfVJ0Ye1AI1T6C-kizq2tniCDFMbJVkhBe3GDVDANRrsFz-UhA7J72D2g0ND6nfo5_hab2YBrAjvIhNRotuRVjlFCIxgwxy-xojL8IgnTFvAS0Oni98Azv7">
+<img class="w-full h-full object-cover opacity-40 grayscale-[20%] brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyc885riNpHy8XPMmrA9KNSt-HWsXSh2_E3nBdg4m-qAu7IvKsYOP3J80081zzLVYTdc5ZpB9MDpyQ34aq2wFIvcP_hHAg5tgn7DiuurkyHaNZsXsuk1dSaz3NpxnibM8TQwDLvHX2SI7iAdPgtVushNfVJ0Ye1AI1T6C-kizq2tniCDFMbJVkhBe3GDVDANRrsFz-UhA7J72D2g0ND6nfo5_hab2YBrAjvIhNRotuRVjlFCIxgwxy-xojL8IgnTFvAS0Oni98Azv7" alt="Cookies Network World">
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="relative z-10 text-center px-margin-mobile">
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4 drop-shadow-xl">OUR JOURNEY</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Dari garasi kecil hingga menjadi rumah bagi ribuan petualang di jagat Minecraft.</p>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4 drop-shadow-xl">ABOUT</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">✦ Cookies Network ✦</p>
 </div>
 </section>
-<!-- Story Content: The Garage Days -->
+
+<!-- Apa Itu Cookies Network -->
 <section class="py-section-gap px-gutter max-w-container-max mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 <div class="md:col-span-7 order-2 md:order-1">
-<span class="inline-block px-4 py-1 bg-tertiary-container/20 text-tertiary rounded-full font-label-md text-label-md mb-4 uppercase tracking-widest">2018: Awal Mula</span>
-<h2 class="font-headline-md text-headline-md text-primary mb-6">Berawal dari Garasi</h2>
+<span class="inline-block px-4 py-1 bg-tertiary-container/20 text-tertiary rounded-full font-label-md text-label-md mb-4 uppercase tracking-widest">🍪 Apa Itu Cookies Network?</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Server Minecraft Survival Indonesia</h2>
 <p class="text-on-surface-variant text-body-lg mb-6 leading-relaxed">
-                        COOKIES NETWORK tidak dimulai di pusat data besar. Semuanya berawal di sebuah garasi sempit dengan satu komputer bekas yang berisik. Dua orang sahabat yang hanya ingin membangun tempat bermain aman untuk teman-temannya. 
-                    </p>
-<div class="p-6 glass-panel rounded-2xl border-l-4 border-secondary transition-all duration-700 opacity-100 translate-y-0">
-<p class="italic text-on-surface font-body-md">"Kami bahkan tidak punya cukup RAM untuk mendukung 10 orang pemain sekaligus. Seringkali server crash hanya karena seseorang meledakkan satu blok TNT."</p>
-<p class="mt-4 font-bold text-primary">— Founder, Cookies</p>
+<strong class="text-primary">Cookies Network</strong> adalah server Minecraft survival Indonesia yang berfokus pada pengalaman bermain yang seru, seimbang, dan penuh komunitas. Kami hadir untuk memberikan pengalaman Minecraft yang lebih dari sekadar bertahan hidup — dengan sistem ekonomi yang mendalam, gamemode yang beragam, dan komunitas yang hangat.
+</p>
+<p class="text-on-surface-variant text-body-lg mb-6 leading-relaxed">
+Server kami mendukung <strong class="text-secondary">Crossplay Java &amp; Bedrock</strong>, sehingga siapapun bisa bergabung tanpa batasan platform. Dikelola oleh tim staff yang berdedikasi, Cookies Network terus berkembang untuk menjadi rumah bagi para pemain Minecraft Indonesia.
+</p>
+<div class="p-6 glass-panel rounded-2xl border-l-4 border-secondary">
+<p class="italic text-on-surface font-body-md">"Dari server kecil yang lahir dari rasa iseng di tahun 2021, kami berkomitmen untuk terus tumbuh dan memberikan yang terbaik untuk seluruh komunitas Minecraft Indonesia."</p>
+<p class="mt-4 font-bold text-primary">— Tim Cookies Network</p>
 </div>
 </div>
 <div class="md:col-span-5 order-1 md:order-2">
 <div class="relative group">
 <div class="absolute -inset-2 bg-secondary opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
-<img class="rounded-3xl chocolate-shadow w-full aspect-square object-cover border-2 border-outline-variant relative z-10" data-alt="A nostalgic low-angle shot of a dusty computer setup in a dimly lit garage with subtle Minecraft block decorations on the shelves. Warm light leaks from a cracked window, illuminating floating dust particles. The vibe is gritty yet cozy, representing the humble beginnings of a major gaming community in a modern minimalist style with tactile deep brown shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABkPf2uRRe5LRTB_Nm4e_ZlCE_qOKkl5w7gWPCSJjYLGfnHxpKlDL2m594i_Vjui7zWXxSAdktv11HKwIpKlRG9uNRvIRbT86BvPlesYMmp6TmbnVIZD7QlGrU7xhtmqNTSII5egyuIAEGL9bUW_WFUh7vSVrCUYzJBH-_qCEbln1BmAqCEJ2USopAHb4jF-JYrmrLPRlSocZn3_NOTV6_pGKPTHa0eakvfk8ZEVkFezbXtj9TEDrFBDKzuiXCXskvGpYyQnW_SQ_X">
+<img class="rounded-3xl chocolate-shadow w-full aspect-square object-cover border-2 border-outline-variant relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABkPf2uRRe5LRTB_Nm4e_ZlCE_qOKkl5w7gWPCSJjYLGfnHxpKlDL2m594i_Vjui7zWXxSAdktv11HKwIpKlRG9uNRvIRbT86BvPlesYMmp6TmbnVIZD7QlGrU7xhtmqNTSII5egyuIAEGL9bUW_WFUh7vSVrCUYzJBH-_qCEbln1BmAqCEJ2USopAHb4jF-JYrmrLPRlSocZn3_NOTV6_pGKPTHa0eakvfk8ZEVkFezbXtj9TEDrFBDKzuiXCXskvGpYyQnW_SQ_X" alt="Cookies Network Server">
+</div>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+<div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl">
+<span class="font-display-lg text-headline-md text-primary">2021</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter mt-1">Tahun Berdiri</span>
+</div>
+<div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl">
+<span class="font-display-lg text-headline-md text-secondary">1.21.11</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter mt-1">Versi MC</span>
+</div>
+<div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl">
+<span class="font-display-lg text-headline-md text-tertiary">Java+Bedrock</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter mt-1">Platform</span>
+</div>
+<div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl">
+<span class="font-display-lg text-headline-md text-secondary">24/7</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter mt-1">Online</span>
+</div>
+</div>
+</section>
+
+<!-- Gamemode Section -->
+<section class="bg-surface-container-low py-section-gap">
+<div class="px-gutter max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-display-lg-mobile md:text-headline-md text-primary">⚔ Gamemode ⚔</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto mt-4">Dua mode utama yang menjadi jantung dari Cookies Network.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Economy -->
+<div class="glass-panel p-8 rounded-3xl chocolate-shadow hover:-translate-y-2 transition-transform duration-300">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-secondary text-4xl">storefront</span>
+<span class="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-xs font-label-md">SURVIVAL ECO</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">💰 Economy</h3>
+<p class="text-on-surface-variant">Mode survival dengan sistem ekonomi penuh. Tanam, panen, dan jual hasil bumi di pasar antar pemain. Bangun kerajaanmu, buka toko sendiri, ikuti auction house, dan jadilah pemain terkaya di server! Cocok untuk kamu yang suka strategi dan bisnis dalam Minecraft.</p>
+<div class="mt-4 inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-label-md">🌾 Survival Eco</div>
+</div>
+<!-- Bedwars -->
+<div class="glass-panel p-8 rounded-3xl chocolate-shadow hover:-translate-y-2 transition-transform duration-300">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-error text-4xl">bed</span>
+<span class="bg-error/20 text-error px-3 py-1 rounded-full text-xs font-label-md">HARDCORE PVP</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">🛏️ Bedwars 1.8</h3>
+<p class="text-on-surface-variant">Mode BedWars penuh aksi dan strategi. Lindungi bed timmu, kumpulkan resource, upgrade perlengkapan, dan hancurkan bed musuh untuk memenangkan pertandingan. Main bersama teman, lakukan rush cepat, kuasai map, dan jadilah tim terakhir yang bertahan dan terkuat!</p>
+<div class="mt-4 inline-block bg-error/20 text-error px-3 py-1 rounded-full text-xs font-label-md">🛏️ Bedwars 1.8</div>
 </div>
 </div>
 </div>
 </section>
-<!-- The Breakthrough: Bento Grid -->
-<section class="bg-surface-container-low py-section-gap">
-<div class="px-gutter max-w-container-max mx-auto">
+
+<!-- Timeline / Sejarah -->
+<section class="py-section-gap px-gutter max-w-container-max mx-auto">
 <div class="text-center mb-16">
-<h2 class="font-headline-md text-display-lg-mobile md:text-headline-md text-primary">Tonggak Sejarah Kami</h2>
-<p class="text-on-surface-variant max-w-xl mx-auto mt-4">Pertumbuhan kami bukan sekadar angka, melainkan momen-momen kebersamaan.</p>
+<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block">📜 Sejarah Kami</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-md text-primary">Perjalanan Cookies Network</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-<!-- 2019 Milestone -->
-<div class="md:col-span-2 glass-panel p-8 rounded-3xl chocolate-shadow hover:-translate-y-2 transition-transform duration-300 transition-all duration-700 opacity-100 translate-y-0">
+<!-- 2021 Awal Mula -->
+<div class="md:col-span-2 glass-panel p-8 rounded-3xl chocolate-shadow hover:-translate-y-2 transition-transform duration-300">
 <div class="flex justify-between items-start mb-6">
-<span class="material-symbols-outlined text-secondary text-4xl" data-icon="rocket_launch">rocket_launch</span>
-<span class="font-label-md text-primary">2019</span>
+<span class="material-symbols-outlined text-secondary text-4xl">rocket_launch</span>
+<span class="font-label-md text-primary">2021</span>
 </div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">The First 100</h3>
-<p class="text-on-surface-variant">Momen di mana kami akhirnya mampu menyewa server dedicated pertama kami. Komunitas mulai tumbuh di luar lingkaran pertemanan awal.</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">Awal Mula</h3>
+<p class="text-on-surface-variant">Semuanya bermula dari <strong class="text-primary">iseng-iseng mencoba membuat server Minecraft Bedrock</strong>. Tanpa ekspektasi besar, hanya semangat untuk bermain bersama teman dan menjelajahi dunia hosting server pertama kali. Di sinilah benih Cookies Network pertama kali ditanam.</p>
 </div>
-<!-- Visual Card -->
+<!-- Gambar -->
 <div class="md:col-span-2 h-64 rounded-3xl overflow-hidden relative group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant, cinematic wide shot of a bustling Minecraft marketplace filled with diverse character skins trading items. The architecture is grand, featuring polished wood and stone textures with glowing green lanterns. The lighting is lush and atmospheric, capturing the high-energy excitement of a thriving digital community hub." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkoXKHBITUjko24hWOUZlkcI7NGVUdG7wBjQ0pu3b5dq9DPBC8aq3_ximvNreSBBx7INP_ASBgivXgM8uyKn0emhEmN_EaVhl4Av7O4Vu_Sc7WkgOsWKwLAFIBgWfwexJEMPW6gP-o5Ma3gV2SxiqBjezdT0okYe52bjOXl6Fjm3Gjv1HcRoTNoLX5bICFlvOLUahrPR4LLOLRRnPVx-3S36Rq5fO7BsGGmqH9_XGEaUU3alamJzbs8h_toqEc1n3ksd2sHZwm76Cs">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkoXKHBITUjko24hWOUZlkcI7NGVUdG7wBjQ0pu3b5dq9DPBC8aq3_ximvNreSBBx7INP_ASBgivXgM8uyKn0emhEmN_EaVhl4Av7O4Vu_Sc7WkgOsWKwLAFIBgWfwexJEMPW6gP-o5Ma3gV2SxiqBjezdT0okYe52bjOXl6Fjm3Gjv1HcRoTNoLX5bICFlvOLUahrPR4LLOLRRnPVx-3S36Rq5fO7BsGGmqH9_XGEaUU3alamJzbs8h_toqEc1n3ksd2sHZwm76Cs" alt="Komunitas Cookies">
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent p-8 flex items-end">
-<p class="text-white font-bold">Interaksi Komunitas Perdana</p>
+<p class="text-white font-bold">Komunitas yang Terus Berkembang</p>
 </div>
 </div>
-<!-- 2021 Milestone -->
-<div class="md:col-span-1 glass-panel p-8 rounded-3xl chocolate-shadow border-t-4 border-tertiary transition-all duration-700 opacity-100 translate-y-0">
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">Rebrand</h3>
-<p class="text-on-surface-variant text-sm">Transformasi menjadi 'COOKIES NETWORK' dengan visi baru yang lebih luas.</p>
+<!-- 2021–2025 -->
+<div class="md:col-span-1 glass-panel p-8 rounded-3xl chocolate-shadow border-t-4 border-tertiary">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">Masa Berkembang</h3>
+<p class="text-on-surface-variant text-sm">Selama beberapa tahun, server terus dikelola dengan penuh cinta walau dalam skala kecil. Berbagai fitur dan pelajaran dikumpulkan satu per satu.</p>
 <div class="mt-4 flex -space-x-2">
 <div class="w-8 h-8 rounded-full bg-secondary"></div>
 <div class="w-8 h-8 rounded-full bg-primary"></div>
 <div class="w-8 h-8 rounded-full bg-tertiary"></div>
 </div>
 </div>
-<!-- 2022 Milestone -->
+<!-- 2026 Era Baru -->
 <div class="md:col-span-2 bg-secondary-container text-on-secondary-container p-8 rounded-3xl relative overflow-hidden">
 <div class="relative z-10">
-<h3 class="font-display-lg text-headline-md mb-2">1,000+ Players</h3>
-<p class="font-body-md opacity-90">Rekor jumlah pemain online secara bersamaan yang memecahkan kapasitas server lama kami.</p>
+<h3 class="font-display-lg text-headline-md mb-2">2026 — Era Baru 🚀</h3>
+<p class="font-body-md opacity-90">Cookies Network resmi hadir kembali dengan visi yang jelas: membangun server yang benar-benar berkembang, punya komunitas yang solid, dan menjadi rumah bagi ribuan pemain Minecraft Indonesia.</p>
 </div>
-<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-20" data-icon="groups">groups</span>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-20">groups</span>
 </div>
-<!-- 2023 Milestone -->
-<div class="md:col-span-1 glass-panel p-8 rounded-3xl chocolate-shadow transition-all duration-700 opacity-100 translate-y-0">
-<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">Innovations</h3>
-<p class="text-on-surface-variant text-sm">Peluncuran plugin kustom eksklusif yang hanya ada di jaringan kami.</p>
-</div>
+<!-- Innovations -->
+<div class="md:col-span-1 glass-panel p-8 rounded-3xl chocolate-shadow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-3">Inovasi Terus</h3>
+<p class="text-on-surface-variant text-sm">Peluncuran fitur dan plugin kustom eksklusif yang terus diperbarui untuk komunitas kami.</p>
 </div>
 </div>
 </section>
-<!-- Current Status / Mission -->
+
+<!-- Visi -->
 <section class="py-section-gap px-gutter max-w-container-max mx-auto text-center">
 <div class="max-w-3xl mx-auto">
-<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block">Visi Kami</span>
+<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block">🎯 Visi Kami</span>
 <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8">Rumah bagi Setiap Pemain</h2>
 <p class="text-on-surface-variant text-body-lg leading-relaxed mb-10">
-                    Kini, Cookies Network bukan lagi sekadar server di garasi. Kami adalah ekosistem tempat ribuan orang menjalin persahabatan, membangun mahakarya, dan berkompetisi secara sehat. Misi kami tetap sama: memberikan pengalaman Minecraft yang paling stabil, menyenangkan, dan berorientasi pada komunitas.
-                </p>
+Kami percaya bahwa sebuah server bukan hanya soal plugin atau fitur — tapi soal <strong class="text-primary">komunitas dan pengalaman</strong>. Cookies Network ingin menjadi tempat di mana setiap pemain merasa diterima, punya tujuan, dan selalu ada hal baru untuk dinikmati. Ini bukan lagi sekadar iseng — ini adalah impian yang sedang diwujudkan. 🍪
+</p>
 <div class="flex flex-wrap justify-center gap-6">
 <div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl w-40">
 <span class="font-display-lg text-headline-md text-secondary">24/7</span>
 <span class="text-on-surface-variant text-xs uppercase tracking-tighter">Uptime</span>
 </div>
 <div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl w-40">
-<span class="font-display-lg text-headline-md text-primary">50+</span>
-<span class="text-on-surface-variant text-xs uppercase tracking-tighter">Minigames</span>
+<span class="font-display-lg text-headline-md text-primary">Java+Bedrock</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter">Platform</span>
 </div>
 <div class="flex flex-col items-center p-6 bg-surface-container rounded-2xl w-40">
-<span class="font-display-lg text-headline-md text-tertiary">150k</span>
-<span class="text-on-surface-variant text-xs uppercase tracking-tighter">Total Members</span>
+<span class="font-display-lg text-headline-md text-tertiary">2021</span>
+<span class="text-on-surface-variant text-xs uppercase tracking-tighter">Tahun Berdiri</span>
 </div>
 </div>
 </div>
 </section>
-<!-- Server IP Widget CTA -->
+
+<!-- CTA -->
 <section class="pb-section-gap px-gutter">
 <div class="max-w-xl mx-auto bg-primary-container p-8 rounded-[32px] chocolate-shadow text-on-primary-container relative overflow-hidden group">
 <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
 <div>
 <p class="font-label-md uppercase text-xs mb-1 opacity-80">Siap untuk menulis sejarahmu?</p>
-<p class="font-headline-sm text-headline-sm font-bold">play.cookiesnetwork.net</p>
+<p class="font-headline-sm text-headline-sm font-bold">cookiessmp.my.id</p>
 </div>
 <button class="bg-surface text-primary px-8 py-4 rounded-2xl font-button-text flex items-center gap-3 hover:scale-105 transition-transform active:scale-95" id="copyBtn" onclick="copyIP()">
-<span class="material-symbols-outlined" data-icon="content_copy" id="copyIcon">content_copy</span>
-<span class="" id="copyText">Salin IP</span>
+<span class="material-symbols-outlined" id="copyIcon">content_copy</span>
+<span id="copyText">Salin IP</span>
 </button>
 </div>
-<!-- Abstract visual element -->
 <div class="absolute -right-10 -top-10 w-40 h-40 bg-on-primary-container/10 rounded-full blur-3xl"></div>
 </div>
 </section>
 </main>
-<!-- SideNavBar (Hidden on Mobile) -->
-<aside class="h-full w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low border-r border-outline-variant shadow-md py-base z-40 translate-x-[-100%] transition-transform duration-300" id="sideNav">
-<div class="px-6 py-8">
-<div class="font-display-lg text-headline-sm text-primary mb-1">Cookies Network</div>
-<div class="font-body-md text-on-surface-variant text-sm flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                Online: 1,402 Players
-            </div>
-</div>
-<nav class="flex flex-col gap-2 mt-4">
-<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors font-body-md text-body-md" href="#">
-<span class="material-symbols-outlined" data-icon="sensors">sensors</span> Server Status
-            </a>
-<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors font-body-md text-body-md" href="#">
-<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span> Leaderboard
-            </a>
-<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors font-body-md text-body-md" href="#">
-<span class="material-symbols-outlined" data-icon="gavel">gavel</span> Rules
-            </a>
-<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors font-body-md text-body-md" href="#">
-<span class="material-symbols-outlined" data-icon="group">group</span> Discord
-            </a>
-</nav>
-<div class="mt-auto p-4">
-<button class="w-full bg-secondary-container text-on-secondary-container py-3 rounded-xl font-button-text hover:bg-secondary-container/80 transition-colors">
-                Copy Server IP
-            </button>
-</div>
-</aside>
+
 <!-- Footer -->
 <footer class="bg-surface-container-lowest w-full py-section-gap shadow-inner border-t border-outline-variant/30">
 <div class="flex flex-col md:flex-row justify-between items-start px-gutter max-w-container-max mx-auto gap-gutter">
 <div class="max-w-xs">
 <div class="font-display-lg text-headline-md text-primary mb-4">COOKIES NETWORK</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Sebuah komunitas Minecraft yang didedikasikan untuk kreativitas, keadilan, dan keseruan tanpa batas sejak 2018.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sebuah komunitas Minecraft yang didedikasikan untuk kreativitas, keadilan, dan keseruan tanpa batas sejak 2021.</p>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
 <div class="flex flex-col gap-4">
 <span class="text-on-surface font-bold uppercase text-xs tracking-widest">Links</span>
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Syarat Layanan</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Kebijakan Privasi</a>
 </div>
 <div class="flex flex-col gap-4">
-<span class="text-on-surface font-bold uppercase text-xs tracking-widest">Support</span>
-<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Contact Support</a>
+<span class="text-on-surface font-bold uppercase text-xs tracking-widest">Bantuan</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Hubungi Support</a>
 <a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Wiki</a>
 </div>
 <div class="flex flex-col gap-4">
-<span class="text-on-surface font-bold uppercase text-xs tracking-widest">Follow Us</span>
+<span class="text-on-surface font-bold uppercase text-xs tracking-widest">Ikuti Kami</span>
 <div class="flex gap-4">
 <a class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="alternate_email">alternate_email</span>
+<span class="material-symbols-outlined text-lg">alternate_email</span>
 </a>
 <a class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-lg" data-icon="video_library">video_library</span>
+<span class="material-symbols-outlined text-lg">video_library</span>
 </a>
 </div>
 </div>
 </div>
 </div>
 <div class="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant/20">
-<p class="text-on-surface-variant text-xs text-center md:text-left">© 2024 Cookies Network. Not an official Minecraft product. We are not affiliated with Mojang AB.</p>
+<p class="text-on-surface-variant text-xs text-center md:text-left">© 2025 Cookies Network · Survival Eco · Dibuat dengan 🍪 dan ☕ · Bukan produk resmi Minecraft. Tidak berafiliasi dengan Mojang AB.</p>
 </div>
 </footer>
+
 <script>
-        function copyIP() {
-            const ip = "play.cookiesnetwork.net";
-            navigator.clipboard.writeText(ip).then(() => {
-                const btn = document.getElementById('copyBtn');
-                const text = document.getElementById('copyText');
-                const icon = document.getElementById('copyIcon');
-                
-                text.innerText = "Copied!";
-                icon.innerText = "cookie";
-                btn.classList.add('bg-secondary', 'text-on-secondary');
-                btn.classList.remove('bg-surface', 'text-primary');
-
-                setTimeout(() => {
-                    text.innerText = "Salin IP";
-                    icon.innerText = "content_copy";
-                    btn.classList.remove('bg-secondary', 'text-on-secondary');
-                    btn.classList.add('bg-surface', 'text-primary');
-                }, 2000);
-            });
-        }
-
-        // Simple Intersection Observer for animation triggers
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.glass-panel').forEach(el => {
-            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
-        });
-    </script>
-
-
+function copyIP() {
+  const ip = "cookiessmp.my.id";
+  navigator.clipboard.writeText(ip).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const text = document.getElementById('copyText');
+    const icon = document.getElementById('copyIcon');
+    text.innerText = "Tersalin!";
+    icon.innerText = "cookie";
+    btn.classList.add('bg-secondary', 'text-on-secondary');
+    btn.classList.remove('bg-surface', 'text-primary');
+    setTimeout(() => {
+      text.innerText = "Salin IP";
+      icon.innerText = "content_copy";
+      btn.classList.remove('bg-secondary', 'text-on-secondary');
+      btn.classList.add('bg-surface', 'text-primary');
+    }, 2000);
+  });
+}
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('opacity-100', 'translate-y-0');
+      entry.target.classList.remove('opacity-0', 'translate-y-10');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.glass-panel').forEach(el => {
+  el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+  observer.observe(el);
+});
+</script>
 </body></html>
