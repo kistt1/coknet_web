@@ -1,425 +1,320 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Team - Cookies Network</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --orange:#FF6B00;
-      --orange-light:#FF8C33;
-      --orange-dark:#CC5500;
-      --orange-glow:rgba(255,107,0,0.1);
-      --dark:#1A0E00;
-      --dark2:#2D1A00;
-      --dark3:#3D2600;
-      --text:#FFF3E6;
-      --text-muted:#FFCB8C;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      background:linear-gradient(180deg,#1A0E00 0%,#2D1A00 60%,#3D2600 100%);
-      background-attachment:fixed;
-      color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;
-    }
-    /* Global animated pixel grid — covers entire page */
-    body::before{
-      content:'';
-      position:fixed;inset:0;z-index:0;
-      background-image:
-        linear-gradient(rgba(255,107,0,0.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,107,0,0.05) 1px,transparent 1px);
-      background-size:32px 32px;
-      animation:gridDrift 20s linear infinite;
-      pointer-events:none;
-    }
-
-    /* NAV */
-    nav{
-      position:fixed;top:0;left:0;right:0;z-index:1000;
-      background:rgba(26,14,0,0.98);
-      border-bottom:3px solid var(--orange-dark);
-      padding:1rem 5%;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .nav-logo{font-family:'Press Start 2P',monospace;color:var(--orange);display:flex;align-items:center;gap:12px;font-size:15px;text-shadow:0 0 12px rgba(255,107,0,0.5);}
-    .nav-logo img{height:38px}
-    .nav-links{display:flex;gap:2.2rem}
-    .nav-links a{color:var(--text-muted);text-decoration:none;font-weight:700;font-size:14px;transition:color 0.2s;}
-    .nav-links a:hover{color:var(--orange);}
-
-    /* ── HERO ── */
-    .staff-hero{
-      padding-top:0;
-      min-height:55vh;
-      background:transparent;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;
-      padding:6rem 2rem 4rem;
-      position:relative;overflow:hidden;
-    }
-
-    /* Radial glow blobs — same as index hero::before */
-    .staff-hero::before{
-      content:'';position:absolute;inset:0;
-      background-image:
-        radial-gradient(circle at 20% 30%,rgba(255,107,0,0.10) 0%,transparent 50%),
-        radial-gradient(circle at 80% 70%,rgba(255,140,51,0.08) 0%,transparent 50%),
-        radial-gradient(circle at 55% 55%,rgba(255,107,0,0.06) 0%,transparent 40%);
-      pointer-events:none;
-    }
-
-    /* Animated pixel grid — now handled by body::before globally */
-    @keyframes gridDrift{
-      0%{background-position:0 0}
-      100%{background-position:32px 32px}
-    }
-
-    /* Floating embers — full page */
-    .embers{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
-    .ember{
-      position:absolute;
-      width:3px;height:3px;
-      background:var(--orange);
-      border-radius:50%;
-      opacity:0;
-      animation:floatUp var(--dur,6s) ease-in var(--delay,0s) infinite;
-    }
-    @keyframes floatUp{
-      0%  {opacity:0;transform:translateY(0) scale(1);}
-      15% {opacity:0.8;}
-      80% {opacity:0.3;}
-      100%{opacity:0;transform:translateY(-120px) scale(0.3);}
-    }
-
-    .staff-title{
-      font-family:'Press Start 2P',monospace;
-      font-size:clamp(36px,6vw,58px);
-      color:var(--orange);
-      text-shadow:0 0 40px rgba(255,107,0,0.6),0 4px 0 #7a3300;
-      position:relative;z-index:1;
-      animation:titlePulse 3s ease-in-out infinite;
-    }
-    @keyframes titlePulse{
-      0%,100%{text-shadow:0 0 40px rgba(255,107,0,0.6),0 4px 0 #7a3300;}
-      50%    {text-shadow:0 0 70px rgba(255,107,0,0.9),0 4px 0 #7a3300;}
-    }
-
-    .hero-badge{
-      background:rgba(255,107,0,0.12);border:1px solid var(--orange-dark);
-      color:var(--orange-light);font-size:11px;font-weight:700;letter-spacing:2px;
-      padding:6px 16px;border-radius:4px;margin-bottom:1.5rem;
-      text-transform:uppercase;position:relative;z-index:2;
-    }
-
-    /* ── STAFF SECTION ── */
-    .staff-section{
-      background:transparent;
-      padding:60px 5% 100px;
-      position:relative;
-      overflow:hidden;
-    }
-    .staff-section::before{
-      content:'';position:absolute;inset:0;
-      background-image:
-        radial-gradient(circle at 15% 20%,rgba(255,107,0,0.10) 0%,transparent 50%),
-        radial-gradient(circle at 85% 80%,rgba(255,140,51,0.08) 0%,transparent 50%),
-        radial-gradient(circle at 50% 50%,rgba(255,107,0,0.06) 0%,transparent 40%);
-      pointer-events:none;
-    }
-
-    .staff-grid{
-      max-width:1400px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
-      gap:35px;
-      position:relative;
-      z-index:1;
-    }
-
-    /* Cards — scroll reveal */
-    .staff-card{
-      background:var(--dark);
-      border:2px solid var(--orange-dark);
-      border-radius:16px;
-      overflow:hidden;
-      opacity:0;
-      transform:translateY(30px);
-      transition:opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.3s;
-    }
-    .staff-card.visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-    .staff-card:hover{
-      transform:translateY(-12px) !important;
-      border-color:var(--orange);
-      box-shadow:0 20px 40px rgba(255,107,0,0.28);
-    }
-
-    .staff-card img{
-      width:100%;
-      height:340px;
-      object-fit:cover;
-      transition:transform 0.5s ease;
-    }
-    .staff-card:hover img{
-      transform:scale(1.04);
-    }
-
-    .staff-name{
-      background:var(--orange);
-      color:#000;
-      font-size:1.65rem;
-      font-weight:800;
-      padding:14px 0;
-      text-align:center;
-    }
-
-    .staff-info{
-      padding:20px 25px 30px;
-      text-align:center;
-    }
-
-    .staff-role{
-      display:inline-block;
-      padding:8px 26px;
-      border-radius:30px;
-      font-weight:800;
-      font-size:14px;
-      margin:12px 0;
-      letter-spacing:1px;
-      position:relative;
-      overflow:hidden;
-    }
-    .staff-role::after{
-      content:'';
-      position:absolute;inset:0;
-      background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.15) 50%,transparent 100%);
-      transform:translateX(-100%);
-      animation:shimmer 2.5s ease-in-out infinite;
-    }
-    @keyframes shimmer{
-      0%  {transform:translateX(-100%)}
-      60%,100%{transform:translateX(100%)}
-    }
-
-
-    .mc-name{
-      font-family:'Press Start 2P',monospace;
-      background:rgba(0,0,0,0.6);
-      padding:8px 22px;
-      border-radius:30px;
-      font-size:0.95rem;
-      color:var(--text-muted);
-    }
-
-    /* ── CUSTOM CURSOR ── */
-    *{cursor:none!important}
-    #cur-dot{
-      position:fixed;top:0;left:0;z-index:99999;pointer-events:none;
-      width:12px;height:12px;
-      background:#FF6B00;
-      border-radius:50%;
-      transform:translate(-50%,-50%);
-      box-shadow:0 0 10px 3px rgba(255,107,0,0.7);
-      transition:transform 0.08s ease,width 0.15s ease,height 0.15s ease,background 0.15s ease;
-    }
-    #cur-ring{
-      position:fixed;top:0;left:0;z-index:99998;pointer-events:none;
-      width:32px;height:32px;
-      border:2px solid rgba(255,107,0,0.6);
-      border-radius:50%;
-      transform:translate(-50%,-50%);
-      transition:width 0.2s ease,height 0.2s ease,border-color 0.2s ease;
-    }
-    .cur-trail{
-      position:fixed;top:0;left:0;z-index:99997;pointer-events:none;
-      border-radius:50%;
-      transform:translate(-50%,-50%);
-      opacity:0;
-      animation:trailFade 0.5s ease forwards;
-    }
-    @keyframes trailFade{
-      0%  {opacity:0.7;transform:translate(-50%,-50%) scale(1);}
-      100%{opacity:0;  transform:translate(-50%,-50%) scale(0.2);}
-    }
-
-    /* Stagger delays for cards */
-    .staff-card:nth-child(1){transition-delay:0.05s}
-    .staff-card:nth-child(2){transition-delay:0.15s}
-    .staff-card:nth-child(3){transition-delay:0.25s}
-    .staff-card:nth-child(4){transition-delay:0.35s}
-    .staff-card:nth-child(5){transition-delay:0.45s}
-  </style>
-</head>
-<body>
-
-<!-- CUSTOM CURSOR -->
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
-
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">
-      <img src="logo.png" alt="Cookies Network"> COOKIES NETWORK
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#fitur">Fitur</a>
-      <a href="index.html#toko">Toko</a>
-      <a href="index.html#discord">Discord</a>
-      <a href="staff.html" style="color:#FF6B00; font-weight:bold;">👥 Staff</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="embers" id="embers"></div>
-
-  <section class="staff-hero">
-    <div class="hero-badge">👥 Tim di Balik Server</div>
-    <h1 class="staff-title">STAFF TEAM</h1>
-  </section>
-
-  <!-- STAFF SECTION -->
-  <div class="staff-section">
-    <div class="staff-grid">
-
-      <div class="staff-card">
-        <img src="img/batu.webp" alt="Founder">
-        <div class="staff-name">Malkistt </div>
-        <div class="staff-info">
-          <div class="staff-role owner">FOUNDER</div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <img src="img/batu.webp" alt="OWNER">
-        <div class="staff-name">zdfbhiu</div>
-        <div class="staff-info">
-          <div class="staff-role admin">OWNEr</div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <img src="img/batu.webp" alt="OWNER">
-        <div class="staff-name">sdfbhiu</div>
-        <div class="staff-info">
-          <div class="staff-role mod">OWNER</div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <img src="img/batu.webp" alt="MODERATOR">
-        <div class="staff-name">Navre_</div>
-        <div class="staff-info">
-          <div class="staff-role helper">MODERATOR</div>
-        </div>
-      </div>
-
-      <div class="staff-card">
-        <img src="img/batu.webp" alt="MODERATOR">
-        <div class="staff-name">HUjman</div>
-        <div class="staff-info">
-          <div class="staff-role builder">MODERATOR</div>>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    /* ── FLOATING EMBERS ── */
-    const container = document.getElementById('embers');
-    for(let i = 0; i < 28; i++){
-      const e = document.createElement('div');
-      e.className = 'ember';
-      e.style.setProperty('--dur',  (4 + Math.random()*6)+'s');
-      e.style.setProperty('--delay',(Math.random()*6)+'s');
-      e.style.left  = (Math.random()*100)+'%';
-      e.style.bottom= (Math.random()*30)+'%';
-      // vary size & colour slightly
-      const sz = 2+Math.random()*3;
-      e.style.width  = sz+'px';
-      e.style.height = sz+'px';
-      e.style.background = Math.random()>0.5 ? '#FF6B00' : '#FFCB8C';
-      container.appendChild(e);
-    }
-
-    /* ── SCROLL REVEAL for cards ── */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Staff Team - Cookies Network</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Work+Sans:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #161311;
+            background-image: radial-gradient(circle at 2px 2px, rgba(210, 180, 140, 0.05) 1px, transparent 0);
+            background-size: 32px 32px;
         }
-      });
-    }, { threshold: 0.12 });
+        .pressed-effect {
+            box-shadow: 0 4px 0 0 #2e7d32;
+            transition: all 0.1s ease;
+        }
+        .pressed-effect:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 0 #2e7d32;
+        }
+        .staff-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .staff-card:hover {
+            transform: translateY(-8px);
+        }
+        .voxel-glow {
+            filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.4));
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#00390a",
+                        "on-tertiary": "#4e2600",
+                        "secondary-fixed": "#94f990",
+                        "on-surface": "#eae1dd",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#3d3836",
+                        "on-primary": "#402d10",
+                        "secondary-container": "#00761f",
+                        "on-background": "#eae1dd",
+                        "secondary": "#78dc77",
+                        "on-primary-fixed-variant": "#584324",
+                        "tertiary-container": "#faa663",
+                        "inverse-on-surface": "#342f2d",
+                        "primary-fixed": "#feddb3",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-primary-fixed": "#281801",
+                        "surface": "#161311",
+                        "on-secondary-fixed-variant": "#005313",
+                        "primary-fixed-dim": "#e1c299",
+                        "surface-dim": "#161311",
+                        "surface-tint": "#e1c299",
+                        "surface-container-highest": "#393431",
+                        "tertiary-fixed": "#ffdcc4",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#d1c5b8",
+                        "tertiary": "#ffcaa3",
+                        "outline-variant": "#4d453c",
+                        "surface-container": "#231f1d",
+                        "inverse-primary": "#725a39",
+                        "surface-variant": "#393431",
+                        "surface-container-low": "#1f1b19",
+                        "on-secondary-container": "#95fb92",
+                        "outline": "#9a8f83",
+                        "surface-container-lowest": "#110d0c",
+                        "inverse-surface": "#eae1dd",
+                        "surface-container-high": "#2e2927",
+                        "secondary-fixed-dim": "#78dc77",
+                        "primary-container": "#d2b48c",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-secondary-fixed": "#002204",
+                        "on-primary-container": "#5b4526",
+                        "on-error": "#690005",
+                        "background": "#161311",
+                        "primary": "#efcfa6",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "on-tertiary-container": "#733a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "section-gap": "80px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Work Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Work Sans"],
+                        "label-md": ["JetBrains Mono"],
+                        "button-text": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "button-text": ["16px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 bg-surface-container-high/50 shadow-sm shadow-[0_4px_20px_rgba(45,27,14,0.3)]">
+<nav class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-headline-md text-primary tracking-tighter">COOKIES NETWORK</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a>
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="store.html">Store</a>
+<a class="font-button-text text-button-text text-primary border-b-4 border-secondary pb-1 transition-all" href="staff.html">Staff</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors">Login</button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Play Now</button>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-gutter py-section-gap">
+<!-- Hero Section -->
+<div class="text-center mb-section-gap">
+<h1 class="font-display-lg text-display-lg text-primary mb-4 md:text-display-lg text-display-lg-mobile">Tim Luar Biasa Kami</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Kenali individu-individu bersemangat di balik Cookies Network yang bekerja tanpa lelah untuk memberikan Anda pengalaman Minecraft terbaik.</p>
+</div>
+<!-- Staff Structure -->
+<div class="space-y-gutter">
+<!-- Founder Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 md:col-start-3 bg-surface-container-high rounded-[32px] p-10 staff-card border border-outline-variant flex flex-col md:flex-row items-center gap-8 shadow-md">
+<div class="relative group shrink-0">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/30 transition-all"></div>
+<img alt="Founder Avatar" class="w-48 h-auto relative z-10 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-Sf7nAuFD5ctnbMzsd6qxA7rVTedwmstjK9D7rnk_C_BwFUWK7E33Q-Ipfs3mNixIjgBNnVe8eaIHQvM3r-gcAFGiItyrRDo_dKn7Dfjuh7TMTJNS9ANrz2qx1kergTxlg-o0daPpmirIeZk2FRwkJmNmqh7wF93x9VR2-WkrlNpljByNhAJBlROb3jawPHr2L0NtwLLVFdrnn68ZFxas3icrQiXje4xsA8QWCrT3RAnmhJXpgUzeqaOxl5lIBzJ4Y_y8JDKbsAu">
+</div>
+<div class="flex-1 text-center md:text-left">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-4 uppercase tracking-widest">Founder</span>
+<h2 class="font-display-lg text-headline-md text-on-surface mb-2">CookieLord</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 italic">"Membangun komunitas termanis sejak 2018."</p>
+<div class="flex gap-4 justify-center md:justify-start">
+<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-primary">mail</span></button>
+<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-primary">share</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Owners Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Owner 1 -->
+<div class="bg-surface-container-high rounded-[32px] p-8 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-4 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-md text-label-md mb-6 uppercase tracking-widest">Owner</span>
+<img alt="Owner Avatar" class="w-32 h-auto mb-6 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-Sf7nAuFD5ctnbMzsd6qxA7rVTedwmstjK9D7rnk_C_BwFUWK7E33Q-Ipfs3mNixIjgBNnVe8eaIHQvM3r-gcAFGiItyrRDo_dKn7Dfjuh7TMTJNS9ANrz2qx1kergTxlg-o0daPpmirIeZk2FRwkJmNmqh7wF93x9VR2-WkrlNpljByNhAJBlROb3jawPHr2L0NtwLLVFdrnn68ZFxas3icrQiXje4xsA8QWCrT3RAnmhJXpgUzeqaOxl5lIBzJ4Y_y8JDKbsAu">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">MuffinGuard</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Operations &amp; Logistics</p>
+</div>
+<!-- Owner 2 -->
+<div class="bg-surface-container-high rounded-[32px] p-8 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-4 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-md text-label-md mb-6 uppercase tracking-widest">Owner</span>
+<img alt="Owner Avatar" class="w-32 h-auto mb-6 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-Sf7nAuFD5ctnbMzsd6qxA7rVTedwmstjK9D7rnk_C_BwFUWK7E33Q-Ipfs3mNixIjgBNnVe8eaIHQvM3r-gcAFGiItyrRDo_dKn7Dfjuh7TMTJNS9ANrz2qx1kergTxlg-o0daPpmirIeZk2FRwkJmNmqh7wF93x9VR2-WkrlNpljByNhAJBlROb3jawPHr2L0NtwLLVFdrnn68ZFxas3icrQiXje4xsA8QWCrT3RAnmhJXpgUzeqaOxl5lIBzJ4Y_y8JDKbsAu">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">BakerBoss</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Creative &amp; Strategy</p>
+</div>
+</div>
+<!-- Staff Grid Section -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter">
+<!-- Staff 1 -->
+<div class="bg-surface-container-high rounded-[24px] p-6 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-3 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] mb-4 border border-outline-variant uppercase tracking-widest">Staff</span>
+<img alt="Staff Avatar" class="w-24 h-auto mb-4 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASt1dLlKYVlPTrfHAx2u8kLp0pA4SFPMs0TTQHQ-iHR-EDS5DZTLA3DptssXEkJYNSdLmu-XH85zXs-9RR9iayUSSDh-3QC4YgW69d05WgDYpeCbub8CtU72qS8ZjDcFeB8r5SXcrzhwaATCwDNj7gsE2-heE377KomsivmeIE-HPhpqIz-yom7H5xbSFs2gKHqwkuBjQRqj25lGqHTvNBV21gZpToQWvk0Ff2-eeKp-1RUA0XMIDrLAb0RYsg3NkdfH29icUEOhO8">
+<h4 class="font-headline-sm text-lg text-on-surface">SugarShield</h4>
+<p class="text-[14px] text-on-surface-variant mt-1">Community Support</p>
+</div>
+<!-- Staff 2 -->
+<div class="bg-surface-container-high rounded-[24px] p-6 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-3 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] mb-4 border border-outline-variant uppercase tracking-widest">Staff</span>
+<img alt="Staff Avatar" class="w-24 h-auto mb-4 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0mO78GFwpKf22sJI-592tqS43ggj4H5EQj_fcG4xrqUxSfJ5phdiyZR2zWplRlVEw74AdWqMBMCUby7tdmSP1wNDsOBjGvk3KTimlIEo1KcyPVi0p2skG-yv_TLsZW0AzqVGt6jHD0-y4QZ-PXem80T4bm-MO6NgD6GkYsBo-Vjd7i6Ta2NZ1goq-uzAoEQ8R5QWDaGy-1X0WLk53J7F0JNBgVmmsWfg9mSKPhk1YpYafEIh1pkvQd2I7B0qDOri5cZNbSOKF7MZe">
+<h4 class="font-headline-sm text-lg text-on-surface">FrostyCrumb</h4>
+<p class="text-[14px] text-on-surface-variant mt-1">Event Coordination</p>
+</div>
+<!-- Staff 3 -->
+<div class="bg-surface-container-high rounded-[24px] p-6 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-3 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] mb-4 border border-outline-variant uppercase tracking-widest">Staff</span>
+<img alt="Staff Avatar" class="w-24 h-auto mb-4 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASt1dLlKYVlPTrfHAx2u8kLp0pA4SFPMs0TTQHQ-iHR-EDS5DZTLA3DptssXEkJYNSdLmu-XH85zXs-9RR9iayUSSDh-3QC4YgW69d05WgDYpeCbub8CtU72qS8ZjDcFeB8r5SXcrzhwaATCwDNj7gsE2-heE377KomsivmeIE-HPhpqIz-yom7H5xbSFs2gKHqwkuBjQRqj25lGqHTvNBV21gZpToQWvk0Ff2-eeKp-1RUA0XMIDrLAb0RYsg3NkdfH29icUEOhO8">
+<h4 class="font-headline-sm text-lg text-on-surface">ByteBaker</h4>
+<p class="text-[14px] text-on-surface-variant mt-1">Technical Developer</p>
+</div>
+<!-- Staff 4 -->
+<div class="bg-surface-container-high rounded-[24px] p-6 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-3 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] mb-4 border border-outline-variant uppercase tracking-widest">Staff</span>
+<img alt="Staff Avatar" class="w-24 h-auto mb-4 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0mO78GFwpKf22sJI-592tqS43ggj4H5EQj_fcG4xrqUxSfJ5phdiyZR2zWplRlVEw74AdWqMBMCUby7tdmSP1wNDsOBjGvk3KTimlIEo1KcyPVi0p2skG-yv_TLsZW0AzqVGt6jHD0-y4QZ-PXem80T4bm-MO6NgD6GkYsBo-Vjd7i6Ta2NZ1goq-uzAoEQ8R5QWDaGy-1X0WLk53J7F0JNBgVmmsWfg9mSKPhk1YpYafEIh1pkvQd2I7B0qDOri5cZNbSOKF7MZe">
+<h4 class="font-headline-sm text-lg text-on-surface">GlazeGuard</h4>
+<p class="text-[14px] text-on-surface-variant mt-1">Safety &amp; Moderation</p>
+</div>
+<!-- Staff 5 -->
+<div class="bg-surface-container-high rounded-[24px] p-6 staff-card border border-outline-variant flex flex-col items-center text-center shadow-md">
+<span class="px-3 py-0.5 rounded-full bg-surface-container-highest text-primary font-label-md text-[12px] mb-4 border border-outline-variant uppercase tracking-widest">Staff</span>
+<img alt="Staff Avatar" class="w-24 h-auto mb-4 voxel-glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASt1dLlKYVlPTrfHAx2u8kLp0pA4SFPMs0TTQHQ-iHR-EDS5DZTLA3DptssXEkJYNSdLmu-XH85zXs-9RR9iayUSSDh-3QC4YgW69d05WgDYpeCbub8CtU72qS8ZjDcFeB8r5SXcrzhwaATCwDNj7gsE2-heE377KomsivmeIE-HPhpqIz-yom7H5xbSFs2gKHqwkuBjQRqj25lGqHTvNBV21gZpToQWvk0Ff2-eeKp-1RUA0XMIDrLAb0RYsg3NkdfH29icUEOhO8">
+<h4 class="font-headline-sm text-lg text-on-surface">CocoaCore</h4>
+<p class="text-[14px] text-on-surface-variant mt-1">Resource Management</p>
+</div>
+</div>
+</div>
+<!-- Recruitment CTA -->
+<div class="mt-section-gap bg-primary-container/10 border-2 border-dashed border-primary/30 rounded-[40px] p-12 text-center">
+<h3 class="font-display-lg text-headline-md text-primary mb-4">Ingin Bergabung dengan Tim?</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl mx-auto">Kami selalu mencari pembangun, pembuat kode, dan pembantu yang bersemangat untuk bergabung dengan keluarga kami yang terus berkembang.</p>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-2xl font-button-text text-button-text pressed-effect hover:scale-105 transition-all">Daftar Jadi Staff</button>
+</div>
+</main>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="h-full w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant shadow-md z-[60] py-base transform -translate-x-full transition-transform duration-300" id="sideNav">
+<div class="px-6 py-8">
+<h2 class="font-display-lg text-headline-sm text-primary">Cookies Network</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Online: 1,402 Players</p>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+                Server Status
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                Leaderboard
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+                Rules
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+                Discord
+            </a>
+</nav>
+<div class="mt-auto p-4">
+<div class="bg-surface-container-high rounded-xl p-4 border border-outline-variant">
+<p class="text-[10px] font-label-md text-on-surface-variant uppercase mb-2">Server IP</p>
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 rounded-lg cursor-pointer hover:bg-surface transition-colors" onclick="copyIP()">
+<code class="font-label-md text-label-md text-secondary">play.cookies.net</code>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" id="copyIcon">content_copy</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest bg-surface-container-highest shadow-inner">
+<div class="flex flex-col md:flex-row justify-between items-start px-gutter max-w-container-max mx-auto gap-gutter">
+<div class="max-w-xs">
+<span class="font-display-lg text-headline-md text-primary block mb-4">COOKIES NETWORK</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Jaringan Minecraft premium untuk pembangun dan penjelajah. Bergabunglah dengan komunitas kami yang terus berkembang hari ini.</p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-8">
+<div class="flex flex-col gap-4">
+<h4 class="font-button-text text-button-text text-on-surface">Komunitas</h4>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Wiki</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Discord</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Forum</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-button-text text-button-text text-on-surface">Dukungan</h4>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Hubungi Dukungan</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Syarat Layanan</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Kebijakan Privasi</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant text-center md:text-left">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Cookies Network. Bukan produk resmi Minecraft.</p>
+</div>
+</footer>
+<script>
+        function copyIP() {
+            const ip = 'play.cookies.net';
+            navigator.clipboard.writeText(ip);
+            
+            const icon = document.getElementById('copyIcon');
+            icon.textContent = 'cookie';
+            icon.classList.add('text-secondary');
+            
+            setTimeout(() => {
+                icon.textContent = 'content_copy';
+                icon.classList.remove('text-secondary');
+            }, 2000);
+        }
 
-    document.querySelectorAll('.staff-card').forEach(el => observer.observe(el));
+        // Simple hover lift effect for cards
+        const cards = document.querySelectorAll('.staff-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
 
-    /* ── CUSTOM CURSOR ── */
-    const dot  = document.getElementById('cur-dot');
-    const ring = document.getElementById('cur-ring');
-    let mx=0,my=0,rx=0,ry=0;
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.left = mx+'px';
-      dot.style.top  = my+'px';
-
-      // spawn trail ember
-      const t = document.createElement('div');
-      t.className = 'cur-trail';
-      const sz = 3 + Math.random()*5;
-      t.style.cssText = `width:${sz}px;height:${sz}px;left:${mx}px;top:${my}px;background:${Math.random()>.5?'#FF6B00':'#FFCB8C'};`;
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), 500);
-    });
-
-    // ring lags behind for smooth follow
-    (function loopRing(){
-      rx += (mx - rx) * 0.14;
-      ry += (my - ry) * 0.14;
-      ring.style.left = rx+'px';
-      ring.style.top  = ry+'px';
-      requestAnimationFrame(loopRing);
-    })();
-
-    // grow on interactive elements
-    const hoverEls = document.querySelectorAll('a,button,.rank-card,.feature-card,.staff-card,.ip-box');
-    hoverEls.forEach(el => {
-      el.addEventListener('mouseenter', ()=>{
-        dot.style.width  = '18px';
-        dot.style.height = '18px';
-        dot.style.background = '#FFCB8C';
-        ring.style.width  = '48px';
-        ring.style.height = '48px';
-        ring.style.borderColor = 'rgba(255,203,140,0.8)';
-      });
-      el.addEventListener('mouseleave', ()=>{
-        dot.style.width  = '12px';
-        dot.style.height = '12px';
-        dot.style.background = '#FF6B00';
-        ring.style.width  = '32px';
-        ring.style.height = '32px';
-        ring.style.borderColor = 'rgba(255,107,0,0.6)';
-      });
-    });
-
-    // click burst
-    document.addEventListener('mousedown', ()=>{
-      dot.style.transform = 'translate(-50%,-50%) scale(0.6)';
-      ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
-      ring.style.opacity = '0.3';
-    });
-    document.addEventListener('mouseup', ()=>{
-      dot.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.opacity = '1';
-    });
-  </script>
-
-</body>
-</html>
+</body></html>
