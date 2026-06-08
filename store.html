@@ -1,873 +1,407 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Store – Cookies Network</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Work+Sans:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#00390a",
+            "on-tertiary": "#4e2600",
+            "secondary-fixed": "#94f990",
+            "on-surface": "#eae1dd",
+            "error": "#ffb4ab",
+            "surface-bright": "#3d3836",
+            "on-primary": "#402d10",
+            "secondary-container": "#00761f",
+            "on-background": "#eae1dd",
+            "secondary": "#78dc77",
+            "on-primary-fixed-variant": "#584324",
+            "tertiary-container": "#faa663",
+            "inverse-on-surface": "#342f2d",
+            "primary-fixed": "#feddb3",
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#2f1400",
+            "on-primary-fixed": "#281801",
+            "surface": "#161311",
+            "on-secondary-fixed-variant": "#005313",
+            "primary-fixed-dim": "#e1c299",
+            "surface-dim": "#161311",
+            "surface-tint": "#e1c299",
+            "surface-container-highest": "#393431",
+            "tertiary-fixed": "#ffdcc4",
+            "on-error-container": "#ffdad6",
+            "on-surface-variant": "#d1c5b8",
+            "tertiary": "#ffcaa3",
+            "outline-variant": "#4d453c",
+            "surface-container": "#231f1d",
+            "inverse-primary": "#725a39",
+            "surface-variant": "#393431",
+            "surface-container-low": "#1f1b19",
+            "on-secondary-container": "#95fb92",
+            "outline": "#9a8f83",
+            "surface-container-lowest": "#110d0c",
+            "inverse-surface": "#eae1dd",
+            "surface-container-high": "#2e2927",
+            "secondary-fixed-dim": "#78dc77",
+            "primary-container": "#d2b48c",
+            "tertiary-fixed-dim": "#ffb780",
+            "on-secondary-fixed": "#002204",
+            "on-primary-container": "#5b4526",
+            "on-error": "#690005",
+            "background": "#161311",
+            "primary": "#efcfa6",
+            "on-tertiary-fixed-variant": "#6f3800",
+            "on-tertiary-container": "#733a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "base": "8px",
+            "section-gap": "80px",
+            "container-max": "1280px",
+            "margin-mobile": "16px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "body-md": ["Work Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Work Sans"],
+            "label-md": ["JetBrains Mono"],
+            "button-text": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "button-text": ["16px", {"lineHeight": "24px", "fontWeight": "700"}],
+            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+          }
+        },
+      },
+    }
+  </script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --orange:#FF6B00;
-  --orange-light:#FF8C33;
-  --orange-dark:#CC5500;
-  --orange-glow:rgba(255,107,0,0.15);
-  --cream:#FFF8F0;
-  --bg:#E85A00;
-  --bg2:#D45000;
-  --bg3:#C04800;
-  --dark:#1A0E00;
-  --dark2:#2D1A00;
-  --dark3:#3D2600;
-  --text:#2A1400;
-  --text-muted:#7A4010;
-  --text-soft:#B06030;
-  --gold:#FFD700;
-  --gold-dark:#B8960C;
-  --border:#F0C090;
-  --border-strong:#E07030;
-  --card-bg:#FFFFFF;
-  --card-bg2:#FFF6ED;
-}
-body{
-  background-color:#E85A00;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 20px 20px, 20px 20px, 4px 4px, 4px 4px;
-  color:var(--text);
-  font-family:'Nunito',sans-serif;
-  overflow-x:hidden;
-}
-*{cursor:none!important}
-
-/* ── CURSOR ── */
-#cur-dot{
-  position:fixed;top:0;left:0;z-index:99999;pointer-events:none;
-  width:12px;height:12px;background:#FFD700;border-radius:50%;
-  transform:translate(-50%,-50%);
-  box-shadow:0 0 10px 3px rgba(255,215,0,0.7);
-  transition:transform .08s ease,width .15s ease,height .15s ease,background .15s ease;
-}
-#cur-ring{
-  position:fixed;top:0;left:0;z-index:99998;pointer-events:none;
-  width:32px;height:32px;border:2px solid rgba(255,215,0,0.6);border-radius:50%;
-  transform:translate(-50%,-50%);
-  transition:transform .18s ease,width .2s ease,height .2s ease,border-color .2s ease;
-}
-.cur-trail{
-  position:fixed;top:0;left:0;z-index:99997;pointer-events:none;
-  border-radius:50%;transform:translate(-50%,-50%);opacity:0;
-  animation:trailFade .5s ease forwards;
-}
-@keyframes trailFade{
-  0%{opacity:.7;transform:translate(-50%,-50%) scale(1);}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(.2);}
-}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(180,60,0,0.97);
-  border-bottom:3px solid #FF9900;
-  display:flex;align-items:center;justify-content:space-between;padding:.8rem 2rem;
-  backdrop-filter:blur(8px);
-  box-shadow:0 2px 20px rgba(0,0,0,0.3);
-}
-.nav-logo{font-family:'Press Start 2P',monospace;color:#FFD700;font-size:12px;
-  text-shadow:0 0 12px rgba(255,215,0,.5);display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo img{height:32px;width:auto}
-.nav-links{display:flex;gap:2rem}
-.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-weight:700;font-size:14px;transition:color .2s}
-.nav-links a:hover{color:#FFD700}
-
-/* ── PIXEL GRID OVERLAY (extra decoration) ── */
-.pixel-grid{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-  background-size:60px 60px;
-  animation:gridDrift 25s linear infinite;
-}
-@keyframes gridDrift{0%{background-position:0 0}100%{background-position:60px 60px}}
-
-/* ── HERO STORE ── */
-.store-hero{
-  min-height:38vh;padding:7rem 2rem 3rem;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;position:relative;
-  background:linear-gradient(180deg, rgba(220,80,0,0.7) 0%, rgba(180,50,0,0.5) 100%);
-}
-.store-hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 60%,rgba(255,200,0,.12) 0%,transparent 70%);
-}
-.hero-badge{
-  background:rgba(255,215,0,.15);border:1px solid #FFD700;
-  color:#FFD700;font-size:11px;font-weight:700;letter-spacing:2px;
-  padding:6px 16px;border-radius:4px;margin-bottom:1.2rem;
-  text-transform:uppercase;position:relative;z-index:1;
-  text-shadow:0 1px 4px rgba(0,0,0,0.4);
-}
-.store-hero h1{
-  font-family:'Press Start 2P',monospace;font-size:clamp(20px,4vw,36px);
-  color:#FFD700;position:relative;z-index:1;
-  text-shadow:0 0 30px rgba(255,215,0,.5),0 4px 0 rgba(0,0,0,0.4);
-  animation:titlePulse 3s ease-in-out infinite;
-}
-@keyframes titlePulse{
-  0%,100%{text-shadow:0 0 20px rgba(255,215,0,.4),0 4px 0 rgba(0,0,0,0.4);}
-  50%{text-shadow:0 0 50px rgba(255,215,0,.7),0 4px 0 rgba(0,0,0,0.4);}
-}
-.store-hero p{
-  color:rgba(255,255,255,0.85);font-size:15px;max-width:460px;line-height:1.8;
-  margin-top:.8rem;position:relative;z-index:1;
-  text-shadow:0 1px 3px rgba(0,0,0,0.4);
-}
-
-/* ── TABS ── */
-.tabs-wrapper{
-  position:relative;z-index:2;
-  display:flex;justify-content:center;
-  padding:2rem 2rem 0;gap:.5rem;flex-wrap:wrap;
-}
-.tab-btn{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;
-  padding:10px 28px;border-radius:6px 6px 0 0;border:2px solid rgba(255,255,255,0.3);
-  border-bottom:none;background:rgba(180,60,0,0.6);color:rgba(255,255,255,0.7);
-  transition:all .2s;letter-spacing:.5px;
-  backdrop-filter:blur(4px);
-}
-.tab-btn:hover{color:#FFD700;border-color:rgba(255,215,0,0.5);background:rgba(200,80,0,0.7)}
-.tab-btn.active{background:rgba(210,90,0,0.85);color:#FFD700;border-color:#FFD700}
-
-/* ── MAIN CONTENT ── */
-main{
-  position:relative;z-index:1;
-  max-width:1100px;margin:0 auto;padding:0 2rem 6rem;
-}
-
-/* ── RANK PANEL ── */
-.rank-intro{
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:0 8px 8px 8px;
-  padding:1.5rem 2rem;margin-bottom:2.5rem;
-  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
-  backdrop-filter:blur(6px);
-}
-.rank-intro-icon{font-size:28px}
-.rank-intro p{color:rgba(255,255,255,0.85);font-size:14px;line-height:1.7;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
-.rank-intro strong{color:#FFD700}
-
-/* ── RANK CARDS GRID ── */
-.ranks-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1.5rem;
-}
-
-.rank-card{
-  background:var(--card-bg);border:2px solid rgba(255,255,255,0.2);
-  border-radius:12px;overflow:hidden;
-  position:relative;
-  opacity:0;transform:translateY(28px);
-  transition:opacity .5s ease,transform .5s ease,border-color .2s,box-shadow .2s;
-  box-shadow:0 4px 16px rgba(0,0,0,0.25);
-}
-.rank-card.visible{opacity:1;transform:translateY(0)}
-.rank-card:hover{border-color:var(--orange);box-shadow:0 8px 32px rgba(0,0,0,0.35);transform:translateY(-5px) !important;}
-
-/* Popular badge */
-.rank-card.popular::before{
-  content:'🔥 POPULER';
-  position:absolute;top:12px;right:-1px;
-  background:var(--orange);color:#fff;
-  font-size:9px;font-weight:900;letter-spacing:1px;
-  padding:4px 10px;border-radius:4px 0 0 4px;
-  font-family:'Press Start 2P',monospace;
-}
-
-.rank-header{
-  padding:1.8rem 1.5rem 1.2rem;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  position:relative;
-}
-.rank-icon{font-size:38px;margin-bottom:.5rem;filter:drop-shadow(0 0 8px rgba(255,107,0,.4));}
-.rank-name{
-  font-family:'Press Start 2P',monospace;font-size:11px;
-  color:var(--orange);margin-bottom:.3rem;letter-spacing:1px;
-}
-.rank-tagline{font-size:12px;color:var(--text-soft);font-weight:600}
-
-.rank-price-box{
-  background:rgba(255,107,0,.06);
-  border-top:1px solid rgba(255,107,0,.2);
-  border-bottom:1px solid rgba(255,107,0,.2);
-  padding:1rem 1.5rem;text-align:center;
-}
-.rank-price{
-  font-family:'Press Start 2P',monospace;font-size:16px;color:var(--orange);
-}
-.rank-price-note{font-size:11px;color:var(--text-soft);margin-top:4px}
-
-.rank-perks{padding:1.2rem 1.5rem}
-.perk{
-  display:flex;align-items:flex-start;gap:8px;
-  font-size:12px;color:var(--text-muted);line-height:1.6;
-  margin-bottom:.55rem;
-}
-.perk-icon{color:var(--orange);flex-shrink:0;margin-top:1px}
-
-.rank-buy-btn{
-  display:block;width:calc(100% - 3rem);margin:0 1.5rem 1.5rem;
-  background:var(--orange);color:#fff;font-weight:900;font-size:12px;
-  padding:12px;border-radius:6px;text-decoration:none;text-align:center;
-  border:none;box-shadow:0 4px 0 var(--orange-dark);
-  transition:all .15s;position:relative;overflow:hidden;
-}
-.rank-buy-btn::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
-  transform:translateX(-100%);animation:shimmer 3s ease-in-out infinite;
-}
-@keyframes shimmer{0%,60%{transform:translateX(-100%)}80%{transform:translateX(100%)}100%{transform:translateX(100%)}}
-.rank-buy-btn:hover{background:var(--orange-light);transform:translateY(-2px)}
-.rank-buy-btn:active{transform:translateY(2px);box-shadow:none}
-
-/* ── RANK COLOR THEMING ── */
-.rank-card.tier-member .rank-header{background:linear-gradient(135deg,#FFF3E6,#FFE4C0)}
-.rank-card.tier-vip    .rank-header{background:linear-gradient(135deg,#FFFDE8,#FFF5C0)}
-.rank-card.tier-vip .rank-icon{filter:drop-shadow(0 0 10px #ffd700);}
-.rank-card.tier-vip .rank-name{color:#B8960C}
-.rank-card.tier-vip .rank-price{color:#B8960C}
-.rank-card.tier-vip .perk-icon{color:#B8960C}
-.rank-card.tier-vip .rank-buy-btn{background:#FFD700;color:#3a2800;box-shadow:0 4px 0 #B8960C}
-.rank-card.tier-vip .rank-buy-btn:hover{background:#ffe44d}
-.rank-card.tier-mvp   .rank-header{background:linear-gradient(135deg,#EEF4FF,#D8EAFF)}
-.rank-card.tier-mvp .rank-icon{filter:drop-shadow(0 0 10px #4a90d9);}
-.rank-card.tier-mvp .rank-name{color:#1a5fa8}
-.rank-card.tier-mvp .rank-price{color:#1a5fa8}
-.rank-card.tier-mvp .perk-icon{color:#1a5fa8}
-.rank-card.tier-mvp .rank-buy-btn{background:#4a90d9;color:#fff;box-shadow:0 4px 0 #2a60a0}
-.rank-card.tier-mvp .rank-buy-btn:hover{background:#5fa3e8}
-.rank-card.tier-elite  .rank-header{background:linear-gradient(135deg,#F8EEFF,#EEDAFF)}
-.rank-card.tier-elite .rank-icon{filter:drop-shadow(0 0 10px #9b3dbf);}
-.rank-card.tier-elite .rank-name{color:#7a1fa0}
-.rank-card.tier-elite .rank-price{color:#7a1fa0}
-.rank-card.tier-elite .perk-icon{color:#7a1fa0}
-.rank-card.tier-elite .rank-buy-btn{background:#9b3dbf;color:#fff;box-shadow:0 4px 0 #6b1a8f}
-.rank-card.tier-elite .rank-buy-btn:hover{background:#b050d8}
-
-/* ── COINS SECTION ── */
-.coins-intro{
-  background:rgba(0,0,0,0.25);border:1px solid rgba(255,215,0,0.4);border-radius:0 8px 8px 8px;
-  padding:1.5rem 2rem;margin-bottom:2.5rem;
-  display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;
-  backdrop-filter:blur(6px);
-}
-.coins-intro p{color:rgba(255,255,255,0.85);font-size:14px;line-height:1.7;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
-.coins-intro strong{color:#FFD700}
-
-.coins-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:1.2rem;margin-bottom:3rem;
-}
-
-.coin-card{
-  background:rgba(30,10,0,0.6);border:2px solid rgba(255,150,50,0.4);border-radius:12px;
-  overflow:hidden;text-align:center;
-  opacity:0;transform:translateY(24px);
-  transition:opacity .45s ease,transform .45s ease,border-color .2s,box-shadow .2s;
-  backdrop-filter:blur(4px);
-  box-shadow:0 4px 16px rgba(0,0,0,0.3);
-}
-.coin-card.visible{opacity:1;transform:translateY(0)}
-.coin-card:hover{border-color:var(--orange);box-shadow:0 0 24px rgba(255,107,0,.3);transform:translateY(-5px) !important;}
-
-.coin-card.best-value{border-color:#FFD700;position:relative}
-.coin-card.best-value::before{
-  content:'⭐ BEST VALUE';
-  position:absolute;top:0;left:0;right:0;
-  background:#FFD700;color:#3a2800;
-  font-size:8px;font-weight:900;letter-spacing:1px;
-  padding:5px;font-family:'Press Start 2P',monospace;
-}
-.coin-card.best-value .coin-top{padding-top:2.4rem}
-
-.coin-top{
-  padding:1.8rem 1.5rem 1.2rem;
-  background:linear-gradient(135deg,rgba(30,10,0,0.8),rgba(60,20,0,0.8));
-}
-.coin-icon{font-size:36px;margin-bottom:.5rem;animation:coinSpin 4s ease-in-out infinite}
-@keyframes coinSpin{
-  0%,100%{transform:rotateY(0deg)}
-  40%{transform:rotateY(180deg)}
-  60%{transform:rotateY(180deg)}
-}
-.coin-amount{
-  font-family:'Press Start 2P',monospace;font-size:18px;color:#FFD700;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.coin-amount span{font-size:12px;color:rgba(255,255,255,0.6)}
-
-.coin-price-row{
-  padding:.9rem 1.5rem;
-  background:rgba(255,107,0,.1);
-  border-top:1px solid rgba(255,107,0,.2);
-  border-bottom:1px solid rgba(255,107,0,.2);
-}
-.coin-price{font-family:'Press Start 2P',monospace;font-size:13px;color:var(--orange)}
-.coin-per{font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px}
-
-.coin-buy-btn{
-  display:block;width:calc(100% - 2.4rem);margin:.9rem 1.2rem 1.2rem;
-  background:var(--orange);color:#1a0a00;font-weight:900;font-size:12px;
-  padding:10px;border-radius:6px;text-decoration:none;text-align:center;
-  border:none;box-shadow:0 4px 0 var(--orange-dark);
-  transition:all .15s;position:relative;overflow:hidden;
-}
-.coin-buy-btn::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-  transform:translateX(-100%);animation:shimmer 3s ease-in-out infinite;
-}
-.coin-buy-btn:hover{background:var(--orange-light);transform:translateY(-2px)}
-.coin-buy-btn:active{transform:translateY(2px);box-shadow:none}
-
-/* Coins usage section */
-.coins-use{
-  background:rgba(0,0,0,0.25);border:1px solid rgba(255,150,50,0.3);border-radius:10px;
-  padding:2rem;margin-top:1rem;backdrop-filter:blur(6px);
-}
-.coins-use-title{
-  font-family:'Press Start 2P',monospace;font-size:11px;color:#FFD700;
-  margin-bottom:1.2rem;
-}
-.coins-use-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;
-}
-.coins-use-item{
-  background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.2);
-  border-radius:8px;padding:1rem;text-align:center;
-}
-.cui-icon{font-size:24px;margin-bottom:.5rem}
-.cui-title{font-size:13px;font-weight:800;color:#fff;margin-bottom:.3rem;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
-.cui-desc{font-size:11px;color:rgba(255,255,255,0.65);line-height:1.6}
-
-/* ── HOW TO BUY ── */
-.how-box{
-  background:rgba(0,0,0,0.25);border:1px solid rgba(255,150,50,0.3);border-radius:10px;
-  padding:2rem;margin-top:2rem;
-  opacity:0;transform:translateY(20px);
-  transition:opacity .6s,transform .6s;
-  backdrop-filter:blur(6px);
-}
-.how-box.visible{opacity:1;transform:translateY(0)}
-.how-title{font-family:'Press Start 2P',monospace;font-size:11px;color:#FFD700;margin-bottom:1.5rem;text-align:center}
-.steps{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
-.step{
-  flex:1;min-width:160px;max-width:210px;text-align:center;
-}
-.step-num{
-  width:40px;height:40px;background:var(--orange);color:#fff;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-family:'Press Start 2P',monospace;font-size:13px;
-  margin:0 auto .8rem;box-shadow:0 4px 0 var(--orange-dark);
-}
-.step-title{font-weight:800;font-size:14px;color:#fff;margin-bottom:.4rem;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
-.step-desc{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.7}
-.step-arrow{
-  align-self:center;color:rgba(255,215,0,0.7);font-size:24px;
-  padding-top:0;display:flex;align-items:center;
-}
-
-/* ── DISCORD CTA ── */
-.store-discord{
-  margin-top:3rem;text-align:center;
-  background:rgba(0,0,0,0.3);
-  border:1px solid rgba(255,150,50,0.3);border-radius:12px;
-  padding:3rem 2rem;
-  opacity:0;transform:translateY(20px);
-  transition:opacity .6s,transform .6s;
-  backdrop-filter:blur(6px);
-}
-.store-discord.visible{opacity:1;transform:translateY(0)}
-.discord-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#5865F2;color:white;padding:14px 32px;border-radius:8px;
-  text-decoration:none;font-weight:800;font-size:15px;transition:opacity .2s,transform .2s;
-  box-shadow:0 4px 0 #3a45c0;margin-top:1rem;
-}
-.discord-btn:hover{opacity:.9;transform:translateY(-2px)}
-.sd-title{font-family:'Press Start 2P',monospace;font-size:13px;color:#FFD700;margin-bottom:.8rem}
-.sd-desc{color:rgba(255,255,255,0.75);font-size:14px;line-height:1.8;max-width:440px;margin:0 auto;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
-
-/* ── TAB CONTENT ── */
-.tab-content{display:none}
-.tab-content.active{display:block}
-.tab-panel-wrap{
-  background:rgba(150,50,0,0.35);border:2px solid rgba(255,215,0,0.4);
-  border-radius:0 10px 10px 10px;
-  padding:2rem;margin-bottom:2rem;
-  backdrop-filter:blur(6px);
-}
-
-/* ── STAGGER DELAYS ── */
-.ranks-grid .rank-card:nth-child(1){transition-delay:.05s}
-.ranks-grid .rank-card:nth-child(2){transition-delay:.1s}
-.ranks-grid .rank-card:nth-child(3){transition-delay:.15s}
-.ranks-grid .rank-card:nth-child(4){transition-delay:.2s}
-.coins-grid .coin-card:nth-child(1){transition-delay:.05s}
-.coins-grid .coin-card:nth-child(2){transition-delay:.1s}
-.coins-grid .coin-card:nth-child(3){transition-delay:.15s}
-.coins-grid .coin-card:nth-child(4){transition-delay:.2s}
-.coins-grid .coin-card:nth-child(5){transition-delay:.25s}
-.coins-grid .coin-card:nth-child(6){transition-delay:.3s}
-
-footer{
-  background:rgba(0,0,0,0.4);border-top:2px solid rgba(255,150,50,0.4);
-  text-align:center;padding:2rem;color:rgba(255,255,255,0.65);font-size:13px;
-  position:relative;z-index:2;
-  backdrop-filter:blur(4px);
-}
-footer strong{color:#FFD700}
-</style>
+    .voxel-bg {
+      background-image: radial-gradient(circle at 2px 2px, rgba(210, 180, 140, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .pressed-effect {
+      box-shadow: 0 4px 0 0 #2e7d32;
+    }
+    .pressed-effect:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 0 #2e7d32;
+    }
+    .choco-shadow {
+      box-shadow: 0 10px 30px -5px rgba(45, 27, 14, 0.6);
+    }
+  </style>
 </head>
-<body>
-
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
-<div class="pixel-grid"></div>
-
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Cookies Network"> COOKIES NETWORK
-  </a>
-  <div class="nav-links">
-    <a href="index.html#fitur">Fitur</a>
-    <a href="store.html" style="color:#FFD700">Store</a>
-    <a href="index.html#discord">Discord</a>
-    <a href="about.html">About</a>
-    <a href="staff.html">Staff</a>
-  </div>
+<body class="bg-background text-on-surface font-body-md voxel-bg min-h-screen">
+<!-- TopNavBar Navigation -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md docked full-width top-0 sticky z-50 bg-surface-container-high/50 shadow-[0_4px_20px_rgba(45,27,14,0.3)]">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md text-primary tracking-tighter">COOKIES NETWORK</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-button-text text-button-text text-primary border-b-4 border-secondary pb-1 transition-all" href="#">Store</a>
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors" href="#">Staff</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block font-button-text text-button-text text-primary hover:scale-105 transition-transform">Login</button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-button-text text-button-text hover:scale-105 transition-transform pressed-effect">Play Now</button>
+</div>
+</div>
 </nav>
-
-<!-- HERO -->
-<div class="store-hero">
-  <div class="hero-badge">🛒 Official Store</div>
-  <h1>COOKIES STORE</h1>
-  <p>Dukung server & upgrade pengalamanmu dengan Rank dan Cookies Coins.<br>Semua transaksi aman melalui Discord Admin kami.</p>
+<div class="flex max-w-container-max mx-auto">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="h-full w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant shadow-md py-base pt-24">
+<div class="px-6 mb-8">
+<h2 class="font-display-lg text-headline-sm text-primary">Cookies Network</h2>
+<p class="text-secondary font-label-md">Online: 1,402 Players</p>
 </div>
-
-<!-- TABS -->
-<div class="tabs-wrapper">
-  <button class="tab-btn active" data-tab="ranks">⚔ Rank</button>
-  <button class="tab-btn" data-tab="coins">🪙 Cookies Coins</button>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-body-md text-body-md">Server Status</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-body-md text-body-md">Leaderboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-body-md text-body-md">Rules</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant mx-2 p-3 rounded-xl flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Discord</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-8">
+<button class="w-full bg-surface-container-high text-primary font-button-text text-button-text py-3 rounded-xl border border-outline/30 hover:bg-surface-variant transition-all flex items-center justify-center gap-2" id="copy-ip">
+<span class="material-symbols-outlined">content_copy</span>
+          Copy Server IP
+        </button>
 </div>
-
-<main>
-
-  <!-- ══════════ RANKS TAB ══════════ -->
-  <div class="tab-content active" id="tab-ranks">
-    <div class="tab-panel-wrap">
-
-      <div class="rank-intro">
-        <div class="rank-intro-icon">⚔️</div>
-        <div>
-          <p>Rank memberikan <strong>keuntungan permanen</strong> di server. Setiap rank lebih tinggi mewarisi semua keuntungan rank sebelumnya. Beli rank sekali, nikmati selamanya!</p>
-        </div>
-      </div>
-
-      <div class="ranks-grid">
-
-        <!-- MEMBER -->
-        <div class="rank-card tier-member">
-          <div class="rank-header">
-            <div class="rank-icon">🍪</div>
-            <div class="rank-name">MEMBER</div>
-            <div class="rank-tagline">Mulai petualanganmu</div>
-          </div>
-          <div class="rank-price-box">
-            <div class="rank-price">GRATIS</div>
-            <div class="rank-price-note">Diberikan otomatis</div>
-          </div>
-          <div class="rank-perks">
-            <div class="perk"><span class="perk-icon">✦</span>Akses ke semua fitur dasar server</div>
-            <div class="perk"><span class="perk-icon">✦</span>Land Claim standar</div>
-            <div class="perk"><span class="perk-icon">✦</span>Player Shop (1 toko)</div>
-            <div class="perk"><span class="perk-icon">✦</span>Daily streak reward</div>
-            <div class="perk"><span class="perk-icon">✦</span>Vote reward harian</div>
-          </div>
-          <span class="rank-buy-btn" style="background:rgba(100,60,0,0.5);color:rgba(255,255,255,0.4);box-shadow:none;pointer-events:none;">Default Rank</span>
-        </div>
-
-        <!-- VIP -->
-        <div class="rank-card tier-vip">
-          <div class="rank-header">
-            <div class="rank-icon">⭐</div>
-            <div class="rank-name">VIP</div>
-            <div class="rank-tagline">Pemain setia</div>
-          </div>
-          <div class="rank-price-box">
-            <div class="rank-price">Rp 25.000</div>
-            <div class="rank-price-note">Pembayaran via Discord</div>
-          </div>
-          <div class="rank-perks">
-            <div class="perk"><span class="perk-icon">✦</span>Semua benefit Member</div>
-            <div class="perk"><span class="perk-icon">✦</span>TempFly 30 menit/hari</div>
-            <div class="perk"><span class="perk-icon">✦</span>Player Shop (3 toko)</div>
-            <div class="perk"><span class="perk-icon">✦</span>Prefix &amp; warna nama [VIP]</div>
-            <div class="perk"><span class="perk-icon">✦</span>Bonus 50 Cookies Coins/minggu</div>
-            <div class="perk"><span class="perk-icon">✦</span>Akses warp VIP khusus</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="rank-buy-btn" target="_blank">💬 Beli di Discord</a>
-        </div>
-
-        <!-- MVP -->
-        <div class="rank-card tier-mvp popular">
-          <div class="rank-header">
-            <div class="rank-icon">💎</div>
-            <div class="rank-name">MVP</div>
-            <div class="rank-tagline">Level lebih tinggi</div>
-          </div>
-          <div class="rank-price-box">
-            <div class="rank-price">Rp 50.000</div>
-            <div class="rank-price-note">Pembayaran via Discord</div>
-          </div>
-          <div class="rank-perks">
-            <div class="perk"><span class="perk-icon">✦</span>Semua benefit VIP</div>
-            <div class="perk"><span class="perk-icon">✦</span>TempFly 1 jam/hari</div>
-            <div class="perk"><span class="perk-icon">✦</span>Player Shop (7 toko)</div>
-            <div class="perk"><span class="perk-icon">✦</span>Prefix &amp; warna nama [MVP]</div>
-            <div class="perk"><span class="perk-icon">✦</span>Bonus 120 Cookies Coins/minggu</div>
-            <div class="perk"><span class="perk-icon">✦</span>Priority support di Discord</div>
-            <div class="perk"><span class="perk-icon">✦</span>Diskon 10% di Auction House</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="rank-buy-btn" target="_blank">💬 Beli di Discord</a>
-        </div>
-
-        <!-- ELITE -->
-        <div class="rank-card tier-elite">
-          <div class="rank-header">
-            <div class="rank-icon">👑</div>
-            <div class="rank-name">ELITE</div>
-            <div class="rank-tagline">Penguasa server</div>
-          </div>
-          <div class="rank-price-box">
-            <div class="rank-price">Rp 100.000</div>
-            <div class="rank-price-note">Pembayaran via Discord</div>
-          </div>
-          <div class="rank-perks">
-            <div class="perk"><span class="perk-icon">✦</span>Semua benefit MVP</div>
-            <div class="perk"><span class="perk-icon">✦</span>TempFly tanpa batas harian</div>
-            <div class="perk"><span class="perk-icon">✦</span>Player Shop tanpa batas</div>
-            <div class="perk"><span class="perk-icon">✦</span>Prefix custom [ELITE] + partikel</div>
-            <div class="perk"><span class="perk-icon">✦</span>Bonus 300 Cookies Coins/minggu</div>
-            <div class="perk"><span class="perk-icon">✦</span>Akses event eksklusif Elite</div>
-            <div class="perk"><span class="perk-icon">✦</span>Diskon 20% di Auction House</div>
-            <div class="perk"><span class="perk-icon">✦</span>Custom join message</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="rank-buy-btn" target="_blank">💬 Beli di Discord</a>
-        </div>
-
-      </div><!-- /ranks-grid -->
-
-      <!-- HOW TO BUY RANK -->
-      <div class="how-box">
-        <div class="how-title">🛒 CARA MEMBELI RANK</div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-title">Join Discord</div>
-            <div class="step-desc">Masuk ke Discord server kami lewat tombol di bawah</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-title">Buka #beli-rank</div>
-            <div class="step-desc">Pergi ke channel pembelian dan mention admin</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-title">Transfer</div>
-            <div class="step-desc">Admin kirimkan info pembayaran (QRIS / Transfer bank)</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-title">Rank Aktif!</div>
-            <div class="step-desc">Setelah konfirmasi, rank langsung diaktifkan di server</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ══════════ COINS TAB ══════════ -->
-  <div class="tab-content" id="tab-coins">
-    <div class="tab-panel-wrap">
-
-      <div class="coins-intro">
-        <div class="rank-intro-icon">🪙</div>
-        <div>
-          <p><strong>Cookies Coins</strong> adalah mata uang premium server. Gunakan untuk membeli item spesial, akses gacha, extend TempFly, dan masih banyak lagi. <strong>Maksimal pembelian: 500 Coins per transaksi.</strong></p>
-        </div>
-      </div>
-
-      <div class="coins-grid">
-
-        <!-- 50 coins -->
-        <div class="coin-card">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">50 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 5.000</div>
-            <div class="coin-per">Rp 100 / coin</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-        <!-- 100 coins -->
-        <div class="coin-card">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">100 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 9.000</div>
-            <div class="coin-per">Rp 90 / coin</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-        <!-- 200 coins -->
-        <div class="coin-card">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">200 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 17.000</div>
-            <div class="coin-per">Rp 85 / coin</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-        <!-- 300 coins -->
-        <div class="coin-card">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">300 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 24.000</div>
-            <div class="coin-per">Rp 80 / coin</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-        <!-- 400 coins -->
-        <div class="coin-card">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">400 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 30.000</div>
-            <div class="coin-per">Rp 75 / coin</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-        <!-- 500 coins BEST VALUE -->
-        <div class="coin-card best-value">
-          <div class="coin-top">
-            <div class="coin-icon">🪙</div>
-            <div class="coin-amount">500 <span>Coins</span></div>
-          </div>
-          <div class="coin-price-row">
-            <div class="coin-price">Rp 35.000</div>
-            <div class="coin-per">Rp 70 / coin — terhemat!</div>
-          </div>
-          <a href="https://discord.gg/DN5GVbu7MS" class="coin-buy-btn" target="_blank">💬 Beli</a>
-        </div>
-
-      </div><!-- /coins-grid -->
-
-      <!-- HOW TO USE COINS -->
-      <div class="coins-use">
-        <div class="coins-use-title">🪙 KEGUNAAN COOKIES COINS</div>
-        <div class="coins-use-grid">
-          <div class="coins-use-item">
-            <div class="cui-icon">🎰</div>
-            <div class="cui-title">Gacha</div>
-            <div class="cui-desc">Spin gacha untuk item eksklusif server</div>
-          </div>
-          <div class="coins-use-item">
-            <div class="cui-icon">✈️</div>
-            <div class="cui-title">TempFly</div>
-            <div class="cui-desc">Extend durasi terbang lebih lama</div>
-          </div>
-          <div class="coins-use-item">
-            <div class="cui-icon">🎁</div>
-            <div class="cui-title">Crate Keys</div>
-            <div class="cui-desc">Tukar Coins dengan kunci crate spesial</div>
-          </div>
-          <div class="coins-use-item">
-            <div class="cui-icon">🏪</div>
-            <div class="cui-title">Shop Premium</div>
-            <div class="cui-desc">Beli item di toko khusus Cookies Coins</div>
-          </div>
-          <div class="coins-use-item">
-            <div class="cui-icon">🏆</div>
-            <div class="cui-title">Event</div>
-            <div class="cui-desc">Gunakan untuk ikut event berbayar</div>
-          </div>
-          <div class="coins-use-item">
-            <div class="cui-icon">🎨</div>
-            <div class="cui-title">Cosmetics</div>
-            <div class="cui-desc">Unlock pet, trail, dan kosmetik unik</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HOW TO BUY COINS -->
-      <div class="how-box" style="margin-top:1.5rem">
-        <div class="how-title">🪙 CARA MEMBELI COINS</div>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-title">Join Discord</div>
-            <div class="step-desc">Masuk ke Discord server kami</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-title">Buka #beli-coins</div>
-            <div class="step-desc">Pilih jumlah coins yang ingin dibeli</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-title">Transfer</div>
-            <div class="step-desc">Lakukan pembayaran sesuai nominal</div>
-          </div>
-          <div class="step-arrow">→</div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-title">Coins Masuk!</div>
-            <div class="step-desc">Coins langsung dikirim ke akun in-game kamu</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- DISCORD CTA -->
-  <div class="store-discord">
-    <div class="sd-title">💬 BUTUH BANTUAN?</div>
-    <p class="sd-desc">Semua pembelian diproses manual oleh admin kami di Discord. Cepat, aman, dan terpercaya!</p>
-    <a href="https://discord.gg/DN5GVbu7MS" class="discord-btn" target="_blank">
-      💬 Join Discord Sekarang
-    </a>
-  </div>
-
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 px-margin-mobile md:px-gutter py-section-gap">
+<!-- Hero Section -->
+<section class="mb-section-gap">
+<div class="relative overflow-hidden rounded-3xl bg-surface-container-high choco-shadow p-8 md:p-12 border border-outline-variant/20">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Official Server Store</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Dukung server kami dan dapatkan item eksklusif, rank premium, serta booster spesial untuk pengalaman bermain yang tak terlupakan.</p>
+<div class="flex flex-wrap gap-4">
+<div class="bg-secondary/10 border border-secondary/30 px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-secondary font-label-md">Instant Delivery</span>
+</div>
+<div class="bg-tertiary/10 border border-tertiary/30 px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-tertiary font-label-md">Secure Payment</span>
+</div>
+</div>
+</div>
+<!-- Decorative Background Image -->
+<div class="absolute right-[-10%] top-[-10%] w-2/3 h-full opacity-20 pointer-events-none">
+<img alt="Minecraft World" class="w-full h-full object-cover rounded-full blur-2xl" data-alt="An expansive, high-resolution Minecraft landscape viewed from a high vantage point, featuring lush green hills, a winding blue river, and a dense forest under a vibrant orange sunset. The style is cinematic and polished, with soft volumetric lighting and a warm, inviting atmosphere that reflects the professional gaming community vibe. The colors are rich with deep browns, greens, and gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy6AlhqxCjvD71kMN8aj_yu2HWXC4ZmSAU3NnVkYnnP_irbl4vo1fEkjf9mMQ8zBEyb59V5_Uk-41rtT2jFQdLMIUrL7sCEAjT9ADTu6aSo5Vhv9TkgoTWmFd2EvFkeiA8AF3WkW_0xgafmuLmu0NjRUspRUbUVpI-dEup8FoZ6eCB33-IMaklq5qtm6C58VareaIJ5JYcVn5fvIuwT1b0Sv35rQE22wDbuPVTHgHaNYwczHB4M930xHdtoBSIkzHBXw9U46NXKCWj"/>
+</div>
+</div>
+</section>
+<!-- Store Grid -->
+<section>
+<div class="flex justify-between items-end mb-gutter">
+<div>
+<h2 class="font-display-lg text-headline-md text-on-surface">Premium Items</h2>
+<p class="text-on-surface-variant">Pilih paket yang sesuai dengan gaya bermainmu</p>
+</div>
+<div class="hidden sm:flex bg-surface-container rounded-xl p-1 gap-1">
+<button class="bg-surface-container-high text-primary px-4 py-2 rounded-lg font-label-md">All</button>
+<button class="hover:bg-surface-variant text-on-surface-variant px-4 py-2 rounded-lg font-label-md transition-colors">Ranks</button>
+<button class="hover:bg-surface-variant text-on-surface-variant px-4 py-2 rounded-lg font-label-md transition-colors">Currency</button>
+</div>
+</div>
+<!-- The Bento-ish Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- VIP Rank -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-secondary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A detailed 3D Minecraft render of a golden crown resting on a velvet cushion, set inside a professional studio lighting setup. The aesthetic is clean and high-fidelity, using a palette of gold, deep brown, and soft tan. The lighting creates a premium, regal feeling with subtle sparkles and a blurred background of a medieval castle hall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIeTlDyAsodEIkfOS_I2f39RY9IEmk9u0cTbjMA0V_fF6EWBksvlaWqv_HW2knG1KcMP398TrSqlP8cnrNCP8BFNka2L_rmNCDjgggSRw2mWMXtRns2Ox5tkS-sDH4lxus3pkh-MVqfkPCl75pY3x_VWHaj-iYZoErv7_P4w_nJcdsHFoY5TxlMr0B3mBFiCPpiSVO070dNl-hMUF5xC3qgWvsmECO1s0tqepm4DiVsZMHhOfeLcpytgqxHR0ZtT_A6J_DU2_dDtM6"/>
+<div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 rounded-lg font-label-md">POPULAR</div>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-primary mb-2">VIP Rank</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Akses ke lobby eksklusif, tag [VIP] berwarna hijau, dan 2x multiplier coins selamanya.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-secondary">Rp 50.000</span>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+<!-- MVP Rank -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-tertiary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A cinematic 3D render of a glowing diamond sword held by a player in a Minecraft world, with dramatic volumetric blue lighting. The environment is a dark dungeon illuminated only by the sword's light. The style is premium and high-energy, utilizing deep obsidian blacks and vibrant electric blue accents to signify elite status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKN945CKtNZMMdFiP8WW_Kj0lqs1xTEnBw4-Qjhjlc0uBDdnzuwmsiCabbdTNDtcYdaQlaNbARXnNz6lhut3vxeCKhHmj75YxFzl97EEyiPPpWrjY0EjRsFa0dkNKyrXesc76UX8Pi-weDJfv63A-ozZX6ACWuTM6SRVWUROsPe15IwZ0MGegROOIFG-BNoedjGMboXOSIP2fvu4FyrTUov6Lc6c5lI2L3PMuGFB2XHTI3Yy6304sr7vggltof79PJS8ZIwnmZ4f1p"/>
+<div class="absolute top-4 left-4 bg-tertiary text-on-tertiary px-3 py-1 rounded-lg font-label-md">ELITE</div>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-tertiary mb-2">MVP Rank</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Semua fitur VIP + akses World Edit, tag [MVP+], dan custom particle effects yang keren.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-tertiary">Rp 125.000</span>
+</div>
+<button class="bg-tertiary text-on-tertiary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+<!-- Cookie Crate -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-primary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
+<span class="material-symbols-outlined text-primary text-8xl" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-primary mb-2">Cookie Crate</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Dapatkan 5 item acak dari koleksi 'Legendary Cookie', termasuk kostum dan skin senjata langka.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-primary">Rp 15.000</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+<!-- 5000 Coins -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-secondary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-secondary/10 to-transparent">
+<span class="material-symbols-outlined text-secondary text-8xl" style="font-variation-settings: 'FILL' 1;">paid</span>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-secondary mb-2">5000 Coins</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Mata uang dalam game untuk membeli kit, upgrade perlengkapan, dan item kosmetik di NPC Shop.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-secondary">Rp 30.000</span>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+<!-- Custom Kit -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-tertiary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-tertiary/10 to-transparent">
+<span class="material-symbols-outlined text-tertiary text-8xl" style="font-variation-settings: 'FILL' 1;">package_2</span>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-tertiary mb-2">Custom Kit</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Rancang kit pribadimu dengan 3 item pilihan (Enchanted Diamond) yang bisa di-spawn setiap 24 jam.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-tertiary">Rp 45.000</span>
+</div>
+<button class="bg-tertiary text-on-tertiary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+<!-- Booster -->
+<div class="group bg-surface-container-high rounded-3xl p-gutter border border-outline-variant/30 hover:border-primary/50 transition-all hover:-translate-y-2 choco-shadow flex flex-col">
+<div class="h-48 rounded-2xl bg-surface-container-low mb-6 overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
+<span class="material-symbols-outlined text-primary text-8xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex-1">
+<h3 class="font-display-lg text-headline-sm text-primary mb-2">Server Booster</h3>
+<p class="text-on-surface-variant text-body-md mb-6">Aktifkan 3x EXP Global untuk seluruh pemain selama 2 jam. Jadilah pahlawan komunitas!</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant font-label-md block">Price</span>
+<span class="font-display-lg text-headline-sm text-primary">Rp 20.000</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-button-text text-button-text pressed-effect hover:scale-105 transition-transform">Beli Sekarang</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Donation Goal -->
+<section class="mt-section-gap">
+<div class="bg-surface-container p-8 rounded-3xl border border-outline-variant/30">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+<div>
+<h3 class="font-headline-md text-on-surface">Monthly Goal</h3>
+<p class="text-on-surface-variant">Bantu kami menjaga server tetap online!</p>
+</div>
+<div class="text-right">
+<span class="text-secondary font-display-lg text-headline-md">75%</span>
+<span class="text-on-surface-variant font-body-md block">Rp 7.500.000 / Rp 10.000.000</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-6 overflow-hidden p-1">
+<div class="bg-gradient-to-r from-secondary-container to-secondary h-full rounded-full transition-all duration-1000" style="width: 75%;"></div>
+</div>
+</div>
+</section>
 </main>
-
-<footer>
-  <p>&copy; 2025 <strong>Cookies Network</strong> · Survival Eco · Dibuat dengan 🍪 dan ☕</p>
-  <p style="margin-top:8px;font-size:12px">Not affiliated with Mojang Studios</p>
+</div>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest bg-surface-container-highest shadow-inner">
+<div class="flex flex-col md:flex-row justify-between items-start px-gutter max-w-container-max mx-auto gap-gutter">
+<div class="max-w-sm">
+<h2 class="font-display-lg text-headline-md text-primary mb-4">COOKIES NETWORK</h2>
+<p class="text-on-surface-variant font-body-md mb-6">Komunitas Minecraft Indonesia terbaik dengan berbagai minigames seru dan fitur premium yang adil bagi semua pemain.</p>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60">© 2024 Cookies Network. Not an official Minecraft product.</p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="flex flex-col gap-4">
+<h4 class="text-on-surface font-button-text">Community</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Discord</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Rules</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Wiki</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-on-surface font-button-text">Legal</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Contact Support</a>
+</div>
+</div>
+</div>
 </footer>
-
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-lg border-t border-outline-variant/20 z-50 px-6 py-3 flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="text-[10px] font-bold">Store</span>
+</a>
+<div class="bg-secondary p-3 rounded-full -mt-10 shadow-lg pressed-effect">
+<span class="material-symbols-outlined text-on-secondary">sports_esports</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-[10px] font-bold">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
 <script>
-/* ── TABS ── */
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
+    document.getElementById('copy-ip').addEventListener('click', function() {
+      const btn = this;
+      const originalContent = btn.innerHTML;
+      
+      // Simulate Copy
+      btn.innerHTML = `<span class="material-symbols-outlined text-secondary">cookie</span> Copied!`;
+      btn.classList.add('scale-95');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalContent;
+        btn.classList.remove('scale-95');
+      }, 2000);
+    });
 
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.tab;
-    tabBtns.forEach(b => b.classList.remove('active'));
-    tabContents.forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + target).classList.add('active');
-    observeAll();
-  });
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash;
-  const saved = localStorage.getItem('storeTab');
-  if(hash === '#tab-coins' || saved === 'coins') {
-    document.querySelector('[data-tab="coins"]').click();
-    localStorage.removeItem('storeTab');
-  }
-});
-
-/* ── SCROLL REVEAL ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.07 });
-
-function observeAll(){
-  document.querySelectorAll('.rank-card,.coin-card,.how-box,.store-discord').forEach(el => {
-    el.classList.remove('visible');
-    observer.observe(el);
-  });
-}
-observeAll();
-
-/* ── CURSOR ── */
-const dot  = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-
-document.addEventListener('mousemove', e => {
-  mx=e.clientX; my=e.clientY;
-  dot.style.left=mx+'px'; dot.style.top=my+'px';
-  const t=document.createElement('div');
-  t.className='cur-trail';
-  const sz=3+Math.random()*4;
-  t.style.cssText=`width:${sz}px;height:${sz}px;left:${mx}px;top:${my}px;background:${Math.random()>.5?'#FFD700':'#FF9900'};`;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(),500);
-});
-(function loop(){
-  rx+=(mx-rx)*.14; ry+=(my-ry)*.14;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a,button,.rank-card,.coin-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    dot.style.width='18px'; dot.style.height='18px'; dot.style.background='#FFD700';
-    ring.style.width='48px'; ring.style.height='48px'; ring.style.borderColor='rgba(255,215,0,.8)';
-  });
-  el.addEventListener('mouseleave',()=>{
-    dot.style.width='12px'; dot.style.height='12px'; dot.style.background='#FFD700';
-    ring.style.width='32px'; ring.style.height='32px'; ring.style.borderColor='rgba(255,215,0,.6)';
-  });
-});
-document.addEventListener('mousedown',()=>{
-  dot.style.transform='translate(-50%,-50%) scale(.6)';
-  ring.style.transform='translate(-50%,-50%) scale(1.5)';
-  ring.style.opacity='.3';
-});
-document.addEventListener('mouseup',()=>{
-  dot.style.transform='translate(-50%,-50%) scale(1)';
-  ring.style.transform='translate(-50%,-50%) scale(1)';
-  ring.style.opacity='1';
-});
-</script>
-</body>
-</html>
+    // Simple interaction for buy buttons
+    document.querySelectorAll('button').forEach(btn => {
+      if (btn.innerText === 'Beli Sekarang') {
+        btn.addEventListener('click', () => {
+          alert('Mengarahkan ke halaman pembayaran aman...');
+        });
+      }
+    });
+  </script>
+</body></html>
